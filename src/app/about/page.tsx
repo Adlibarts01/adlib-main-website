@@ -1,7 +1,6 @@
 import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Camera, Users, ImageIcon, ArrowRight } from "lucide-react"
+// Removing unused imports
+import { Camera, Users, ImageIcon } from "lucide-react"
 import ApertureIcon from "@/components/aperture-icon"
 
 export default function AboutPage() {
@@ -13,7 +12,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="font-outfit text-4xl font-bold md:text-5xl">About Adlib Photography Club</h1>
             <p className="font-work-sans mt-4 text-lg text-gray-300">
-              Our story, mission, and the community we're building.
+              Our story, mission, and the community we&apos;re building.
             </p>
           </div>
         </div>
@@ -31,7 +30,7 @@ export default function AboutPage() {
                   create a supportive community for learning and creative exploration beyond the classroom.
                 </p>
                 <p>
-                  The name "Adlib" was chosen to represent the balance between technical precision and creative
+                  The name &quot;Adlib&quot; was chosen to represent the balance between technical precision and creative
                   spontaneity that defines great photography. Just as musicians might improvise (ad lib) within the
                   structured framework of music theory, photographers balance technical knowledge with creative vision.
                 </p>
@@ -59,7 +58,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-outfit text-3xl font-bold text-[#0A1D37]">Our Mission & Values</h2>
             <p className="font-work-sans mt-4 text-gray-600">
-              At Adlib Photography Club, we're guided by a set of core principles that shape everything we do.
+              At Adlib Photography Club, we&apos;re guided by a set of core principles that shape everything we do.
             </p>
           </div>
 
@@ -100,7 +99,7 @@ export default function AboutPage() {
               </div>
               <h3 className="font-outfit text-xl font-bold text-[#0A1D37]">Visual Storytelling</h3>
               <p className="font-work-sans mt-2 text-gray-600">
-                We value photography's power to communicate ideas, emotions, and narratives through visual means.
+                We value photography&apos;s power to communicate ideas, emotions, and narratives through visual means.
               </p>
             </div>
           </div>
@@ -113,7 +112,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-outfit text-3xl font-bold text-[#0A1D37]">What We Offer</h2>
             <p className="font-work-sans mt-4 text-gray-600">
-              As a member of Adlib Photography Club, you'll have access to a variety of resources and opportunities.
+              As a member of Adlib Photography Club, you&apos;ll have access to a variety of resources and opportunities.
             </p>
           </div>
 

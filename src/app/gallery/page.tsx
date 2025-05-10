@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { SetStateAction, useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -130,20 +130,29 @@ const container = {
   },
 }
 
-const item = {
+// Using underscore prefix to indicate intentionally unused variable
+const _item = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 }
 
 export default function GalleryPage() {
-  const [selectedPhoto, setSelectedPhoto] = useState(null)
+  const [selectedPhoto, setSelectedPhoto] = useState<{
+    id: number;
+    title: string;
+    photographer: string;
+    category: string;
+    image: string;
+    metadata: string;
+    description: string;
+  } | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [activeCategory, setActiveCategory] = useState("All")
 
   const filteredGallery =
     activeCategory === "All" ? galleryItems : galleryItems.filter((item) => item.category === activeCategory)
 
-  const openModal = (photo) => {
+  const openModal = (photo: SetStateAction<{ id: number; title: string; photographer: string; category: string; image: string; metadata: string; description: string } | null>) => {
     setSelectedPhoto(photo)
     setIsModalOpen(true)
   }
@@ -153,12 +162,14 @@ export default function GalleryPage() {
   }
 
   const goToNextPhoto = () => {
+    if (!selectedPhoto) return
     const currentIndex = filteredGallery.findIndex((photo) => photo.id === selectedPhoto.id)
     const nextIndex = (currentIndex + 1) % filteredGallery.length
     setSelectedPhoto(filteredGallery[nextIndex])
   }
 
   const goToPreviousPhoto = () => {
+    if (!selectedPhoto) return
     const currentIndex = filteredGallery.findIndex((photo) => photo.id === selectedPhoto.id)
     const previousIndex = (currentIndex - 1 + filteredGallery.length) % filteredGallery.length
     setSelectedPhoto(filteredGallery[previousIndex])
@@ -209,7 +220,7 @@ export default function GalleryPage() {
                       <motion.div
                         key={item.id}
                         className="group relative overflow-hidden rounded-lg bg-white dark:bg-[#1A2E4A] shadow-md hover:shadow-lg transition-all duration-300"
-                        variants={item}
+                        variants={_item}
                         whileHover={{ y: -5 }}
                       >
                         <div className="aspect-4/3 relative overflow-hidden">

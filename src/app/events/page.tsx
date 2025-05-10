@@ -1,10 +1,10 @@
 "use client"
 
-import { SetStateAction, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Calendar, Clock, MapPin, Users, Bell, X } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
+import { Calendar, Clock, MapPin, Users, Bell } from "lucide-react"
+import { motion } from "framer-motion"
 import RegistrationForm from "@/components/registration-form"
 import {
   Dialog,

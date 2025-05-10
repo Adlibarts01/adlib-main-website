@@ -126,14 +126,14 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Registration error:', error);
     
     // Return error response
     return NextResponse.json(
       { 
         error: 'Registration failed', 
-        message: error.message || 'An unexpected error occurred'
+        message: error instanceof Error ? error.message : 'An unexpected error occurred'
       },
       { status: 500 }
     );
@@ -141,7 +141,7 @@ export async function POST(request: NextRequest) {
 }
 
 // GET handler to retrieve registrations (Admin only)
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // In a production environment, you would implement authentication here
     // to ensure only admins can access registration data
@@ -155,13 +155,13 @@ export async function GET(request: NextRequest) {
     // Return the registrations
     return NextResponse.json({ registrations });
     
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error fetching registrations:', error);
     
     return NextResponse.json(
       { 
         error: 'Failed to fetch registrations', 
-        message: error.message || 'An unexpected error occurred'
+        message: error instanceof Error ? error.message : 'An unexpected error occurred'
       },
       { status: 500 }
     );

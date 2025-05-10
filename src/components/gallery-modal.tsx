@@ -26,7 +26,7 @@ interface GalleryModalProps {
   onPrevious: () => void
 }
 
-export default function GalleryModal({ photos, currentPhoto, isOpen, onClose, onNext, onPrevious }: GalleryModalProps) {
+export default function GalleryModal({ currentPhoto, isOpen, onClose, onNext, onPrevious }: GalleryModalProps) {
   const [isLiked, setIsLiked] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [showControls, setShowControls] = useState(true)

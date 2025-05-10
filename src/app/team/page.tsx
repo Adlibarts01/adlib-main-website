@@ -104,7 +104,8 @@ const item = {
 }
 
 export default function TeamPage() {
-  const [hoveredMember, setHoveredMember] = useState(null)
+  // State is used for hover effects, but we only need the setter
+  const [, setHoveredMember] = useState<number | null>(null)
 
   return (
     <div className="flex flex-col">
@@ -193,7 +194,7 @@ export default function TeamPage() {
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white">Interested in Leadership?</h2>
             <p className="font-work-sans mt-4 text-gray-600 dark:text-gray-300">
-              We're always looking for passionate photographers to join our leadership team. Elections for officer
+              We&apos;re always looking for passionate photographers to join our leadership team. Elections for officer
               positions are held at the beginning of each academic year.
             </p>
             <p className="font-work-sans mt-2 text-gray-600 dark:text-gray-300">

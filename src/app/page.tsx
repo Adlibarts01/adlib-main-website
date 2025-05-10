@@ -8,7 +8,6 @@ import ApertureIcon from "@/components/aperture-icon"
 import HeroSection from "@/components/hero-section"
 import FeaturedGallery from "@/components/featured-gallery"
 import EventsPreview from "@/components/events-preview"
-import TeamPreview from "@/components/team-preview"
 import { motion } from "framer-motion"
 
 export default function Home() {
@@ -55,7 +54,7 @@ export default function Home() {
                 learn, create, and grow together.
               </p>
               <p className="font-work-sans text-adlib-darkgray dark:text-gray-400">
-                Our name "Adlib" represents the balance between technical precision and creative spontaneity that
+                Our name &quot;Adlib&quot; represents the balance between technical precision and creative spontaneity that
                 defines great photography. We provide a supportive community where members can develop their skills,
                 share their work, and explore new techniques.
               </p>
@@ -138,7 +137,7 @@ export default function Home() {
           <div className="mx-auto max-w-3xl space-y-6">
         <h2 className="font-outfit text-3xl font-bold md:text-4xl">Interested in Our Events?</h2>
         <p className="font-work-sans text-lg text-gray-300">
-          Join our upcoming photography events and workshops to experience what we're all about.
+          Join our upcoming photography events and workshops to experience what we&apos;re all about.
         </p>
         <div className="flex justify-center pt-4">
           <Button

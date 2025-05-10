@@ -80,7 +80,7 @@ export default function ContactPage() {
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="font-outfit text-4xl font-bold md:text-5xl">Contact Us</h1>
             <p className="font-work-sans mt-4 text-lg text-gray-300">
-              Have questions or want to join? We'd love to hear from you.
+              Have questions or want to join? We&apos;d love to hear from you.
             </p>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function ContactPage() {
             <div>
               <h2 className="font-outfit text-3xl font-bold text-[#0A1D37]">Get In Touch</h2>
               <p className="font-work-sans mt-4 text-gray-600">
-                Whether you have a question about membership, events, or just want to say hello, we're here to help.
+                Whether you have a question about membership, events, or just want to say hello, we&apos;re here to help.
               </p>
 
               <div className="mt-8 space-y-6">
@@ -190,11 +190,11 @@ export default function ContactPage() {
             <div>
               <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-xs">
                 <h2 className="font-outfit text-2xl font-bold text-[#0A1D37]">Send Us a Message</h2>
-                <p className="font-work-sans mt-2 text-gray-600">We'll get back to you as soon as possible.</p>
+                <p className="font-work-sans mt-2 text-gray-600">We&apos;ll get back to you as soon as possible.</p>
 
                 {formStatus === "success" && (
                   <div className="mt-4 rounded-lg bg-green-50 p-4 text-green-700">
-                    <p className="font-work-sans font-medium">Thank you for your message! We'll be in touch soon.</p>
+                    <p className="font-work-sans font-medium">Thank you for your message! We&apos;ll be in touch soon.</p>
                   </div>
                 )}
 

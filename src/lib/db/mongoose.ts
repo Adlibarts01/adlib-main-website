@@ -1,17 +1,29 @@
 import mongoose from 'mongoose';
 
+type MongooseCache = {
+  cached: typeof mongoose;
+  conn: mongoose.Connection | null;
+  promise: Promise<mongoose.Mongoose> | null;
+};
+
 declare global {
-  var mongoose: { conn: any; promise: any } | undefined;
+  // eslint-disable-next-line no-var
+  var mongoose: MongooseCache | undefined;
 }
 
 // MongoDB connection string - use environment variable in production
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/adlib-website';
 
 // Creating a cached connection for improved performance in serverless environments
-let cached = global.mongoose || { conn: null, promise: null };
+const cached: MongooseCache = global.mongoose ?? {
+  cached: mongoose,
+  conn: null,
+  promise: null,
+};
 
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
+// Initialize global mongoose if not exists
+if (!global.mongoose) {
+  global.mongoose = cached;
 }
 
 async function connectToDatabase() {
@@ -35,7 +47,8 @@ async function connectToDatabase() {
       });
   }
 
-  cached.conn = await cached.promise;
+  const mongooseInstance: typeof mongoose = await cached.promise;
+  cached.conn = mongooseInstance.connection;
   return cached.conn;
 }
 
