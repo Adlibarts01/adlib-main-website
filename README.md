@@ -21,6 +21,14 @@ cd adlib-main-website
 bun install
 ```
 
+3. Set up environment variables:
+
+```bash
+cp .env.example .env
+```
+
+Update the values in the `.env` file with your own configuration.
+
 ## Usage
 
 ### Development Server
