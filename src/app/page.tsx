@@ -131,28 +131,23 @@ export default function Home() {
 
       <FeaturedGallery />
       <EventsPreview />
-      <TeamPreview />
 
       {/* CTA Section */}
       <section className="py-16 bg-adlib-primary dark:bg-black text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="mx-auto max-w-3xl space-y-6">
-            <h2 className="font-outfit text-3xl font-bold md:text-4xl">Ready to Join Our Community?</h2>
-            <p className="font-work-sans text-lg text-gray-300">
-              Become a member today and start your photography journey with Adlib Photography Club.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-              <Button asChild className="bg-adlib-secondary text-white hover:bg-adlib-tertiary">
-                <Link href="/contact">Join Now</Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-adlib-primary"
-              >
-                <Link href="/events">Attend an Event First</Link>
-              </Button>
-            </div>
+        <h2 className="font-outfit text-3xl font-bold md:text-4xl">Interested in Our Events?</h2>
+        <p className="font-work-sans text-lg text-gray-300">
+          Join our upcoming photography events and workshops to experience what we're all about.
+        </p>
+        <div className="flex justify-center pt-4">
+          <Button
+            asChild
+            className="bg-adlib-secondary text-white hover:bg-adlib-tertiary"
+          >
+            <Link href="/events">View Upcoming Events</Link>
+          </Button>
+        </div>
           </div>
         </div>
       </section>
