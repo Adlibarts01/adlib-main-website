@@ -186,77 +186,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* Membership Info Section */}
-      <section className="py-16 md:py-24 bg-[#0A1D37] text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 items-center">
-            <div>
-              <h2 className="font-outfit text-3xl font-bold">Join Our Community</h2>
-              <div className="font-work-sans mt-6 space-y-4 text-gray-300">
-                <p>
-                  Membership is open to all students, faculty, staff, and community members with an interest in
-                  photography, regardless of experience level or equipment.
-                </p>
-                <p>
-                  Annual membership dues are $30 for students and $45 for non-students. Dues help cover the cost of
-                  equipment, event expenses, and other club activities.
-                </p>
-                <p>
-                  Not sure if Adlib is right for you? You're welcome to attend up to three events as a guest before
-                  deciding to join.
-                </p>
-              </div>
-              <div className="mt-8">
-                <Button asChild className="bg-[#F7B32B] text-[#0A1D37] hover:bg-[#F7B32B]/90">
-                  <Link href="/contact">
-                    Become a Member
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="aspect-square overflow-hidden rounded-lg">
-                <Image
-                  src="/placeholder.svg?height=400&width=400"
-                  alt="Club member taking photos"
-                  width={400}
-                  height={400}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="aspect-square overflow-hidden rounded-lg">
-                <Image
-                  src="/placeholder.svg?height=400&width=400"
-                  alt="Photography workshop"
-                  width={400}
-                  height={400}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="aspect-square overflow-hidden rounded-lg">
-                <Image
-                  src="/placeholder.svg?height=400&width=400"
-                  alt="Photo exhibition"
-                  width={400}
-                  height={400}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="aspect-square overflow-hidden rounded-lg">
-                <Image
-                  src="/placeholder.svg?height=400&width=400"
-                  alt="Group photo walk"
-                  width={400}
-                  height={400}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    
     </div>
   )
 }

@@ -36,10 +36,24 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, subscribe: checked }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Simulate form submission
-    setTimeout(() => {
+    
+    setFormStatus(null) // Reset form status
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+      
       setFormStatus("success")
       // Reset form after success
       setFormData({
@@ -52,7 +66,10 @@ export default function ContactPage() {
       })
       // Clear success message after 5 seconds
       setTimeout(() => setFormStatus(null), 5000)
-    }, 1000)
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setFormStatus("error")
+    }
   }
 
   return (
@@ -300,23 +317,6 @@ export default function ContactPage() {
                   </Button>
                 </form>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="py-16 bg-[#E5E5E5]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-outfit text-3xl font-bold text-[#0A1D37]">Find Us</h2>
-            <p className="font-work-sans mt-4 text-gray-600">Located in the Campus Arts Building, Room 302</p>
-          </div>
-
-          <div className="mt-8 aspect-video w-full overflow-hidden rounded-lg shadow-md">
-            {/* Placeholder for map - in a real implementation, this would be a Google Maps or similar embed */}
-            <div className="flex h-full w-full items-center justify-center bg-gray-300">
-              <p className="font-work-sans text-gray-600">Interactive Map Would Be Embedded Here</p>
             </div>
           </div>
         </div>

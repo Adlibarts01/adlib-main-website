@@ -1,105 +1,21 @@
 "use client"
 
-import { useState } from "react"
+import { SetStateAction, useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Calendar, Clock, MapPin, Users, Bell } from "lucide-react"
-import { motion } from "framer-motion"
+import { Calendar, Clock, MapPin, Users, Bell, X } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 import RegistrationForm from "@/components/registration-form"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog"
+import { announcements, upcomingEvents } from "@/lib/data/events"
 
-const announcements = [
-  {
-    id: 1,
-    title: "New Equipment Available",
-    date: "April 28, 2025",
-    content:
-      "We've added new Sony Alpha a7 IV cameras and lenses to our equipment library. Members can now borrow these for their projects.",
-    isNew: true,
-  },
-  {
-    id: 2,
-    title: "Summer Exhibition Call for Submissions",
-    date: "April 15, 2025",
-    content: "Submit your best work for our annual summer exhibition by July 1st. This year's theme is 'Urban Nature'.",
-    isNew: true,
-  },
-  {
-    id: 3,
-    title: "Workshop Schedule Change",
-    date: "April 10, 2025",
-    content: "The Portrait Lighting Masterclass has been rescheduled from May 25 to June 2 due to venue availability.",
-    isNew: false,
-  },
-]
 
-const upcomingEvents = [
-  {
-    id: 1,
-    title: "Night Photography Workshop",
-    date: "May 15, 2025",
-    time: "7:00 PM - 10:00 PM",
-    location: "Campus Arts Building, Room 302",
-    description:
-      "Learn techniques for capturing stunning night scenes with minimal equipment. This hands-on workshop will cover long exposure techniques, light painting, and astrophotography basics.",
-    capacity: "20 participants",
-    difficulty: "Beginner to Intermediate",
-  },
-  {
-    id: 2,
-    title: "Portrait Lighting Masterclass",
-    date: "June 2, 2025",
-    time: "2:00 PM - 5:00 PM",
-    location: "Photography Studio, Media Center",
-    description:
-      "Explore creative lighting setups for portrait photography. This workshop will cover one, two, and three-light setups, as well as how to use modifiers effectively to shape light.",
-    capacity: "15 participants",
-    difficulty: "Intermediate",
-  },
-  {
-    id: 3,
-    title: "Summer Photo Walk: Urban Exploration",
-    date: "June 18, 2025",
-    time: "10:00 AM - 1:00 PM",
-    location: "Downtown Arts District (Meet at Central Plaza)",
-    description:
-      "Join us for a guided photo walk through the city's most photogenic locations. We'll explore urban textures, architecture, and street scenes while practicing composition techniques.",
-    capacity: "25 participants",
-    difficulty: "All Levels",
-  },
-  {
-    id: 4,
-    title: "Macro Photography Workshop",
-    date: "July 5, 2025",
-    time: "1:00 PM - 4:00 PM",
-    location: "Botanical Gardens, Education Center",
-    description:
-      "Discover the fascinating world of macro photography. Learn how to capture stunning close-up images of flowers, insects, and small objects with incredible detail.",
-    capacity: "12 participants",
-    difficulty: "Intermediate",
-  },
-  {
-    id: 5,
-    title: "Photo Editing with Lightroom",
-    date: "July 20, 2025",
-    time: "6:00 PM - 8:30 PM",
-    location: "Campus Computer Lab, Room 105",
-    description:
-      "Master the essentials of Adobe Lightroom for organizing and editing your photographs. Learn workflow techniques, color grading, and how to develop your personal editing style.",
-    capacity: "18 participants",
-    difficulty: "Beginner to Intermediate",
-  },
-  {
-    id: 6,
-    title: "Summer Exhibition Opening",
-    date: "August 10, 2025",
-    time: "6:00 PM - 9:00 PM",
-    location: "Campus Gallery, Arts Building",
-    description:
-      "Join us for the opening reception of our annual summer exhibition featuring work from club members. Refreshments will be served, and many of the photographers will be present to discuss their work.",
-    capacity: "Open to Public",
-    difficulty: "N/A",
-  },
-]
 
 const container = {
   hidden: { opacity: 0 },
@@ -118,15 +34,44 @@ const item = {
 
 export default function EventsPage() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false)
-  const [selectedEvent, setSelectedEvent] = useState(null)
+  interface Event {
+    id: number;
+    title: string;
+    date: string;
+    time: string;
+    location: string;
+    description: string;
+    capacity: string;
+    difficulty: string;
+  }
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
+  interface Announcement {
+    id: number;
+    title: string;
+    date: string;
+    content: string;
+    isNew: boolean;
+  }
+  
+  const [selectedAnnouncement, setSelectedAnnouncement] = useState<Announcement | null>(null)
+  const [isAnnouncementModalOpen, setIsAnnouncementModalOpen] = useState(false)
 
-  const openRegistration = (event) => {
+  const openRegistration = (event: Event) => {
     setSelectedEvent(event)
     setIsRegistrationOpen(true)
   }
 
   const closeRegistration = () => {
     setIsRegistrationOpen(false)
+  }
+
+  const openAnnouncementModal = (announcement: Announcement) => {
+    setSelectedAnnouncement(announcement)
+    setIsAnnouncementModalOpen(true)
+  }
+
+  const closeAnnouncementModal = () => {
+    setIsAnnouncementModalOpen(false)
   }
 
   return (
@@ -157,9 +102,10 @@ export default function EventsPage() {
             {announcements.map((announcement) => (
               <motion.div
                 key={announcement.id}
-                className="bg-white dark:bg-[#1A2E4A] rounded-lg shadow-md overflow-hidden relative"
+                className="bg-white dark:bg-[#1A2E4A] rounded-lg shadow-md overflow-hidden relative cursor-pointer"
                 variants={item}
                 whileHover={{ y: -5 }}
+                onClick={() => openAnnouncementModal(announcement)}
               >
                 {announcement.isNew && (
                   <div className="absolute top-0 right-0">
@@ -269,8 +215,40 @@ export default function EventsPage() {
 
       {/* Registration Form Modal */}
       {selectedEvent && (
-        <RegistrationForm isOpen={isRegistrationOpen} onClose={closeRegistration} eventTitle={selectedEvent.title} />
+        <RegistrationForm 
+          isOpen={isRegistrationOpen} 
+          onClose={closeRegistration} 
+          eventTitle={selectedEvent.title}
+          eventId={selectedEvent.id}
+        />
       )}
+
+      {/* Announcement Modal */}
+      <Dialog open={isAnnouncementModalOpen} onOpenChange={setIsAnnouncementModalOpen}>
+        {selectedAnnouncement && (
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle className="text-xl font-bold text-[#0A1D37] dark:text-white">
+                {selectedAnnouncement.title}
+              </DialogTitle>
+              <DialogDescription className="font-outfit text-sm text-[#F7B32B]">
+                {selectedAnnouncement.date}
+              </DialogDescription>
+            </DialogHeader>
+            <div className="mt-2">
+              <p className="font-work-sans text-gray-600 dark:text-gray-300">{selectedAnnouncement.content}</p>
+            </div>
+            <div className="mt-4 flex justify-end">
+              <Button 
+                onClick={closeAnnouncementModal}
+                className="bg-[#0A1D37] dark:bg-[#F7B32B] dark:text-[#0A1D37] hover:bg-[#0A1D37]/90 dark:hover:bg-[#F7B32B]/90"
+              >
+                Close
+              </Button>
+            </div>
+          </DialogContent>
+        )}
+      </Dialog>
     </div>
   )
 }
