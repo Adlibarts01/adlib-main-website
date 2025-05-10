@@ -187,26 +187,7 @@ export default function TeamPage() {
           </motion.div>
         </div>
       </section>
-
-      {/* Join the Team Section */}
-      <section className="py-16 bg-[#E5E5E5] dark:bg-[#0A1D37]/50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white">Interested in Leadership?</h2>
-            <p className="font-work-sans mt-4 text-gray-600 dark:text-gray-300">
-              We&apos;re always looking for passionate photographers to join our leadership team. Elections for officer
-              positions are held at the beginning of each academic year.
-            </p>
-            <p className="font-work-sans mt-2 text-gray-600 dark:text-gray-300">
-              Contact our current president at{" "}
-              <a href="mailto:alex@adlibphoto.club" className="text-[#F7B32B] hover:underline">
-                alex@adlibphoto.club
-              </a>{" "}
-              to learn more about upcoming opportunities.
-            </p>
-          </div>
-        </div>
-      </section>
+     
     </div>
   )
 }
