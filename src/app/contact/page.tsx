@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
-import { MapPin, Mail, Phone, Instagram, Facebook, Twitter } from "lucide-react"
+import { MapPin, Mail, Phone, Instagram } from "lucide-react"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -103,11 +103,11 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-outfit text-lg font-semibold text-[#0A1D37]">Visit Us</h3>
                     <p className="font-work-sans text-gray-600">
-                      Campus Arts Building, Room 302
+                    Golden Jublie Block
+                    <br />
+                      Siddaganga Institute of Technology
                       <br />
-                      123 University Ave
-                      <br />
-                      Collegetown, CA 90210
+                      Tumakuru , Karnataka 572103
                     </p>
                   </div>
                 </div>
@@ -117,8 +117,8 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-outfit text-lg font-semibold text-[#0A1D37]">Email Us</h3>
                     <p className="font-work-sans text-gray-600">
-                      <a href="mailto:info@adlibphoto.club" className="text-[#F7B32B] hover:underline">
-                        info@adlibphoto.club
+                      <a href="mailto:adlibarts01@gmail.com" className="text-[#F7B32B] hover:underline">
+                        adlibarts01@gmail.com
                       </a>
                     </p>
                   </div>
@@ -141,26 +141,13 @@ export default function ContactPage() {
                 <h3 className="font-outfit text-lg font-semibold text-[#0A1D37]">Follow Us</h3>
                 <div className="mt-4 flex space-x-4">
                   <a
-                    href="#"
+                    href="https://www.instagram.com/sit_adlib/"
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F7B32B]/10 text-[#F7B32B] transition-colors hover:bg-[#F7B32B] hover:text-white"
                     aria-label="Instagram"
                   >
                     <Instagram className="h-5 w-5" />
                   </a>
-                  <a
-                    href="#"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F7B32B]/10 text-[#F7B32B] transition-colors hover:bg-[#F7B32B] hover:text-white"
-                    aria-label="Facebook"
-                  >
-                    <Facebook className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="#"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F7B32B]/10 text-[#F7B32B] transition-colors hover:bg-[#F7B32B] hover:text-white"
-                    aria-label="Twitter"
-                  >
-                    <Twitter className="h-5 w-5" />
-                  </a>
+        
                 </div>
               </div>
 
