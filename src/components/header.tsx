@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
-import ApertureIcon from "@/components/aperture-icon"
 import { cn } from "@/lib/utils"
 
 const navigation = [
@@ -40,9 +40,14 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
-              <ApertureIcon className="h-8 w-8 text-adlib-secondary" />
-              <span className="font-outfit text-xl font-bold text-adlib-primary dark:text-white">ADLIB</span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/home/Logo club.png"
+                alt="ADLIB Logo"
+                width={40}
+                height={40}
+                className="h-10 w-auto"
+              />
             </Link>
           </div>
 
@@ -78,9 +83,14 @@ export default function Header() {
                     <SheetTitle>Navigation Menu</SheetTitle>
                   </div>
                   <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
-                    <Link href="/" className="flex items-center space-x-2">
-                      <ApertureIcon className="h-8 w-8 text-adlib-secondary" />
-                      <span className="font-outfit text-xl font-bold text-adlib-primary dark:text-white">ADLIB</span>
+                    <Link href="/" className="flex items-center">
+                      <Image
+                        src="/logo.png"
+                        alt="ADLIB Logo"
+                        width={40}
+                        height={40}
+                        className="h-10 w-auto"
+                      />
                     </Link>
                     <SheetTrigger asChild>
                       {/* <Button variant="ghost" size="icon" aria-label="Close menu">

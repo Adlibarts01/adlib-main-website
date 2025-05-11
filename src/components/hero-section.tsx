@@ -4,22 +4,21 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import ApertureIcon from "@/components/aperture-icon"
 import { motion } from "framer-motion"
 
 const heroImages = [
   {
-    src: "/placeholder.svg?height=1080&width=1920",
-    alt: "Landscape photography",
+    src: "/gallery/animals/IMG-20241005-WA0034.jpg",
+    alt: "Wildlife photography",
     title: "Explore Landscapes",
   },
   {
-    src: "/placeholder.svg?height=1080&width=1920",
+    src: "/gallery/IMG-20241005-WA0033.jpg",
     alt: "Portrait photography",
     title: "Master Portraits",
   },
   {
-    src: "/placeholder.svg?height=1080&width=1920",
+    src: "/gallery/artitecture/IMG_20250211_191303_661.jpg",
     alt: "Street photography",
     title: "Capture Street Life",
   },
@@ -61,9 +60,9 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="flex items-center space-x-4">
-              <ApertureIcon className="h-12 w-12" />
-              <h1 className="font-outfit text-5xl font-bold text-white md:text-6xl">ADLIB</h1>
+            <div className="flex items-center gap-4">
+              
+              <h1 className="font-outfit text-5xl font-bold text-white md:text-6xl">Adlib-Arts</h1>
             </div>
             <p className="font-outfit text-xl font-light text-white md:text-2xl">
               Capturing moments, framing perspectives

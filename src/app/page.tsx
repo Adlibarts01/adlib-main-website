@@ -4,7 +4,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Camera, Users, Calendar, ImageIcon, ArrowRight } from "lucide-react"
-import ApertureIcon from "@/components/aperture-icon"
 import HeroSection from "@/components/hero-section"
 import FeaturedGallery from "@/components/featured-gallery"
 import EventsPreview from "@/components/events-preview"
@@ -26,12 +25,10 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <ApertureIcon className="h-64 w-64 text-adlib-secondary opacity-10" bladeCount={12} />
-              </div>
+              
               <div className="relative h-full w-full rounded-full overflow-hidden border-8 border-adlib-gray dark:border-gray-800">
                 <Image
-                  src="/placeholder.svg?height=500&width=500"
+                  src="/home/Logo club.png"
                   alt="Photographer in action"
                   fill
                   className="object-cover"
