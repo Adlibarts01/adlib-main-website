@@ -58,39 +58,224 @@ export async function POST(request: NextRequest) {
         
         // HTML email template
         const emailHtml = `
-<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
-  <div style="text-align: center; margin-bottom: 20px;">
-    <h1 style="color: #0A1D37; margin-bottom: 5px;">Registration Confirmed!</h1>
-    <p style="font-size: 18px; color: #666;">Thank you for registering for our event</p>
-  </div>
-  
-  <div style="background-color: #f5f5f5; border-left: 4px solid #F7B32B; padding: 15px; margin-bottom: 20px;">
-    <h2 style="color: #0A1D37; margin-top: 0;">${body.eventTitle}</h2>
-    <p>Hello ${body.name}, your registration has been confirmed!</p>
-  </div>
-  
-  <div style="margin-bottom: 20px;">
-    <h3 style="color: #0A1D37;">Important Information:</h3>
-    <ul style="padding-left: 20px;">
-      <li>Please arrive 15 minutes before the start time</li>
-      <li>Bring your equipment as specified in the event details</li>
-      <li>If you have any questions, please contact us at info@adlibphoto.club</li>
-    </ul>
-  </div>
-  
-  <div style="background-color: #E5F6FD; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-    <h3 style="color: #0A1D37; margin-top: 0;">Join Our WhatsApp Group</h3>
-    <p>Please join our WhatsApp group for event updates and communication.</p>
-    <div style="text-align: center; margin-top: 15px;">
-      <a href="${whatsappLink}" style="display: inline-block; background-color: #25D366; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Join WhatsApp Group</a>
-    </div>
-  </div>
-  
-  <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #777; font-size: 14px;">
-    <p>We look forward to seeing you!</p>
-    <p>AdLib Photography Club Team</p>
-  </div>
-</div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="en">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <title></title>
+    <div
+      style="display:none;overflow:hidden;line-height:1px;opacity:0;max-height:0;max-width:0"></div>
+  </head>
+  <body
+    style='background-color:rgb(245,245,245);font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";padding-top:40px;padding-bottom:40px'>
+    <!--$-->
+    <table
+      align="center"
+      width="100%"
+      border="0"
+      cellpadding="0"
+      cellspacing="0"
+      role="presentation"
+      style="background-color:rgb(255,255,255);margin-left:auto;margin-right:auto;padding:40px;max-width:600px;box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), 0 1px 2px 0 rgb(0,0,0,0.05)">
+      <tbody>
+        <tr style="width:100%">
+          <td>
+            <table
+              align="center"
+              width="100%"
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              role="presentation">
+              <tbody>
+                <tr>
+                  <td>
+                    <div
+                      style="height:4px;width:80px;background-color:rgb(76,175,80);margin-bottom:60px"></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table
+              align="center"
+              width="100%"
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              role="presentation"
+              style="margin-bottom:60px">
+              <tbody>
+                <tr>
+                  <td>
+                    <p
+                      style="font-size:14px;text-transform:uppercase;letter-spacing:2px;color:rgb(139,195,74);margin-bottom:16px;line-height:24px;margin-top:16px">
+                      Registration Confirmed
+                    </p>
+                    <h1
+                      style="font-size:32px;font-weight:700;color:rgb(51,51,51);letter-spacing:-0.025em;margin:0px">
+                      Welcome to
+                      <!-- -->${body.eventTitle}
+                    </h1>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table
+              align="center"
+              width="100%"
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              role="presentation"
+              style="margin-bottom:60px">
+              <tbody>
+                <tr>
+                  <td>
+                    <p
+                      style="font-size:16px;color:rgb(85,85,85);line-height:26px;margin-bottom:16px;margin-top:16px">
+                      Hello
+                      <!-- -->${body.name}<!-- -->,
+                    </p>
+                    <p
+                      style="font-size:16px;color:rgb(85,85,85);line-height:26px;margin-bottom:16px;margin-top:16px">
+                      Your registration has been confirmed. We're looking
+                      forward to seeing you at the event.
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table
+              align="center"
+              width="100%"
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              role="presentation"
+              style="margin-bottom:60px">
+              <tbody>
+                <tr>
+                  <td>
+                    <div
+                      style="height:1px;width:100%;background-color:rgb(238,238,238);margin-bottom:40px"></div>
+                    <p
+                      style="font-size:14px;text-transform:uppercase;letter-spacing:2px;color:rgb(139,195,74);margin-bottom:24px;line-height:24px;margin-top:16px">
+                      Important Information
+                    </p>
+                    <div
+                      style="padding-left:24px;border-left-width:2px;border-color:rgb(76,175,80)">
+                      <p
+                        style="font-size:16px;color:rgb(85,85,85);line-height:26px;margin-bottom:16px;margin-top:16px">
+                        Please arrive 15 minutes before the start time
+                      </p>
+                      <p
+                        style="font-size:16px;color:rgb(85,85,85);line-height:26px;margin-bottom:16px;margin-top:16px">
+                        Bring your equipment as specified in the event details
+                      </p>
+                      <p
+                        style="font-size:16px;color:rgb(85,85,85);line-height:26px;margin-bottom:16px;margin-top:16px">
+                        If you have any questions, please contact us at info@adlibphoto.club
+                      </p>
+                    </div>
+                    <div
+                      style="height:1px;width:100%;background-color:rgb(238,238,238);margin-top:40px"></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table
+              align="center"
+              width="100%"
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              role="presentation"
+              style="margin-bottom:60px">
+              <tbody>
+                <tr>
+                  <td>
+                    <div
+                      style="background-color:rgb(249,249,249);padding:32px;border-left-width:4px;border-color:rgb(76,175,80)">
+                      <p
+                        style="font-size:18px;font-weight:700;color:rgb(51,51,51);margin-bottom:16px;line-height:24px;margin-top:16px">
+                        Join Our WhatsApp Group
+                      </p>
+                      <p
+                        style="font-size:16px;color:rgb(85,85,85);line-height:26px;margin-bottom:24px;margin-top:16px">
+                        Please join our WhatsApp group for event updates and communication.
+                      </p>
+                      <a
+                        href="${whatsappLink}"
+                        style="background-color:rgb(76,175,80);color:rgb(255,255,255);font-weight:700;padding-top:14px;padding-bottom:14px;padding-left:32px;padding-right:32px;border-radius:0px;text-decoration-line:none;text-align:center;box-sizing:border-box;line-height:100%;text-decoration:none;display:inline-block;max-width:100%;mso-padding-alt:0px;padding:14px 32px 14px 32px"
+                        target="_blank"
+                        ><span
+                          ><!--[if mso]><i style="mso-font-width:400%;mso-text-raise:21" hidden>&#8202;&#8202;&#8202;&#8202;</i><![endif]--></span
+                        ><span
+                          style="max-width:100%;display:inline-block;line-height:120%;mso-padding-alt:0px;mso-text-raise:10.5px"
+                          >Join WhatsApp Group</span
+                        ><span
+                          ><!--[if mso]><i style="mso-font-width:400%" hidden>&#8202;&#8202;&#8202;&#8202;&#8203;</i><![endif]--></span
+                        ></a
+                      >
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table
+              align="center"
+              width="100%"
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              role="presentation"
+              style="margin-bottom:60px">
+              <tbody>
+                <tr>
+                  <td>
+                    <p
+                      style="font-size:16px;color:rgb(85,85,85);line-height:26px;margin-bottom:16px;margin-top:16px">
+                      We look forward to seeing you at the event!
+                    </p>
+                    <p
+                      style="font-size:16px;color:rgb(85,85,85);line-height:26px;margin-top:24px;margin-bottom:16px">
+                      Best regards,<br /><span
+                        style="color:rgb(51,51,51);font-weight:500"
+                        >AdLib Photography Club Team</span
+                      >
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table
+              align="center"
+              width="100%"
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              role="presentation">
+              <tbody>
+                <tr>
+                  <td>
+                    <div
+                      style="height:1px;width:100%;background-color:rgb(238,238,238);margin-bottom:32px"></div>
+                    <p
+                      style="font-size:14px;color:rgb(136,136,136);margin:0px;margin-bottom:0px;line-height:24px;margin-top:0px;margin-left:0px;margin-right:0px">
+                      © ${new Date().getFullYear()} AdLib Photography Club
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!--7--><!--/$-->
+  </body>
+</html>
 `;
         
         // Send email using Resend
