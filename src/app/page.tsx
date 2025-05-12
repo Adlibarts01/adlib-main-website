@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button"
 import { Camera, Users, Calendar, ImageIcon, ArrowRight } from "lucide-react"
 import HeroSection from "@/components/hero-section"
 import FeaturedGallery from "@/components/featured-gallery"
-import EventsPreview from "@/components/events-preview"
 import { motion } from "framer-motion"
 
 export default function Home() {
