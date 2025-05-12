@@ -126,27 +126,7 @@ export default function Home() {
       </section>
 
       <FeaturedGallery />
-      <EventsPreview />
-
-      {/* CTA Section */}
-      <section className="py-16 bg-adlib-primary dark:bg-black text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mx-auto max-w-3xl space-y-6">
-        <h2 className="font-outfit text-3xl font-bold md:text-4xl">Interested in Our Events?</h2>
-        <p className="font-work-sans text-lg text-gray-300">
-          Join our upcoming photography events and workshops to experience what we&apos;re all about.
-        </p>
-        <div className="flex justify-center pt-4">
-          <Button
-            asChild
-            className="bg-adlib-secondary text-white hover:bg-adlib-tertiary"
-          >
-            <Link href="/events">View Upcoming Events</Link>
-          </Button>
-        </div>
-          </div>
-        </div>
-      </section>
+     
     </div>
   )
 }
