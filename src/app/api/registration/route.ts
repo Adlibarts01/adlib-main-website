@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
   </body>
 </html>`;
 
-        const { data: emailData, error } = await resend.emails.send({
+        const { error } = await resend.emails.send({
           from: process.env.FROM_EMAIL || "AdLib Photography Club <noreply@adlib.club>",
           to: data.email,
           subject: `Registration Confirmed: ${data.eventTitle}`,
@@ -132,7 +132,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { message: 'Failed to process registration' },
       { status: 500 }
-    );
+    );  
   }
 }
 
