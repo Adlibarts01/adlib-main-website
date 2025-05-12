@@ -45,7 +45,7 @@ export default function HeroSection() {
             className="absolute inset-0 transition-opacity duration-1000"
             style={{ opacity: currentSlide === index ? 1 : 0 }}
           >
-            <Image src={image.src || "/placeholder.svg"} alt={image.alt} fill priority className="object-cover" />
+            <Image src={image.src || "/home/dark_logo.png"} alt={image.alt} fill priority className="object-cover" />
             <div className="absolute inset-0 bg-adlib-primary/70 dark:bg-black/70" />
           </div>
         ))}
