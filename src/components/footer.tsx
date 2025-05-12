@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Instagram, Facebook, Twitter, Mail, MapPin, Phone } from "lucide-react"
-import ApertureIcon from "@/components/aperture-icon"
+import { Logo } from "@/components/logo"
 
 export default function Footer() {
   return (
@@ -8,27 +8,20 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-2">
-              <ApertureIcon className="h-8 w-8 text-adlib-secondary" />
-              <span className="font-outfit text-xl font-bold">ADLIB</span>
+            <Link href="/" className="block">
+              <Logo className="w-48" />
             </Link>
             <p className="font-work-sans text-sm text-gray-300">
               Capturing moments, framing perspectives. A community of photographers dedicated to the art and science of
               visual storytelling.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="text-gray-300 hover:text-adlib-secondary">
+              <Link href="https://www.instagram.com/sit_adlib/" className="text-gray-300 hover:text-adlib-secondary">
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
               </Link>
-              <Link href="#" className="text-gray-300 hover:text-adlib-secondary">
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link href="#" className="text-gray-300 hover:text-adlib-secondary">
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>
+              
+              
             </div>
           </div>
 
@@ -105,23 +98,23 @@ export default function Footer() {
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-adlib-secondary mr-2 mt-0.5" />
                 <span className="text-gray-300">
-                  Campus Arts Building, Room 302
+                  Golden Jublie Block
                   <br />
-                  123 University Ave
+                  Siddaganga Institute of Technology
                   <br />
-                  Collegetown, CA 90210
+                  Tumakuru , Karnataka, India
                 </span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-adlib-secondary mr-2" />
-                <a href="mailto:info@adlibphoto.club" className="text-gray-300 hover:text-adlib-secondary">
-                  info@adlibphoto.club
+                <a href="mailto:adlibarts01@gmail.com" className="text-gray-300 hover:text-adlib-secondary">
+                  adlibarts01@gmail.com
                 </a>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-adlib-secondary mr-2" />
-                <a href="tel:+15551234567" className="text-gray-300 hover:text-adlib-secondary">
-                  (555) 123-4567
+                <a href="tel:7981103350" className="text-gray-300 hover:text-adlib-secondary">
+                  7981103350
                 </a>
               </li>
             </ul>

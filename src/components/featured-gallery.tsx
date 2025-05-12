@@ -7,57 +7,58 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-const categories = ["All", "Landscape", "Portrait", "Street", "Abstract"]
+const categories = ["All", "Landscape", "Abstract","Wildlife", "Artchitecture","Insects",]
 
 const galleryItems = [
   {
     id: 1,
-    title: "Mountain Sunrise",
-    photographer: "Alex Morgan",
-    category: "Landscape",
-    image: "/placeholder.svg?height=600&width=800",
+    title: "Lazy Lion",
+    photographer: "Mohit Hemarath",
+    category: "Wildlife",
+    image: "/gallery/animals/IMG-20241005-WA0026.jpg",
     metadata: "f/8, 1/125s, ISO 100",
   },
   {
     id: 2,
-    title: "Urban Portrait",
-    photographer: "Jamie Chen",
-    category: "Portrait",
-    image: "/placeholder.svg?height=800&width=600",
+    title: "Clock Tower",
+    photographer: "Rounak Gupta",
+    category: "Artchitecture",
+    image: "/gallery/artitecture/IMG-20241005-WA0021.jpg",
     metadata: "f/2.8, 1/200s, ISO 400",
   },
   {
     id: 3,
-    title: "City Reflections",
-    photographer: "Sam Wilson",
-    category: "Street",
-    image: "/placeholder.svg?height=600&width=800",
+    title: "Kingfisher",
+    photographer: "Abhiday U",
+    category: "Wildlife",
+    image: "/gallery/birds/IMG-20241005-WA0040.jpg",
     metadata: "f/5.6, 1/60s, ISO 800",
   },
   {
     id: 4,
-    title: "Light Patterns",
-    photographer: "Taylor Reed",
-    category: "Abstract",
-    image: "/placeholder.svg?height=800&width=800",
+    title: "Spider Eye",
+    photographer: "Rakshit M S",
+    category: "Insects",
+    image: "/gallery/insects/1000009113.jpg",
     metadata: "f/11, 1/15s, ISO 200",
   },
   {
     id: 5,
-    title: "Ocean Sunset",
-    photographer: "Jordan Lee",
-    category: "Landscape",
-    image: "/placeholder.svg?height=600&width=800",
+    title: "Mini Car",
+    photographer: "Rakshit M S",
+    category: "Abstract",
+    image: "/gallery/miniature/df5e5943-62a1-4103-bef8-1ca6a3991413.jpeg",
     metadata: "f/16, 1/30s, ISO 100",
   },
   {
     id: 6,
-    title: "Street Vendor",
+    title: "Netravati",
     photographer: "Casey Kim",
-    category: "Street",
-    image: "/placeholder.svg?height=800&width=600",
+    category: "Landscape",
+    image: "/gallery/scenery/IMG-20241005-WA0036.jpg",
     metadata: "f/4, 1/250s, ISO 400",
   },
+  
 ]
 
 export default function FeaturedGallery() {
