@@ -50,7 +50,7 @@ export const upcomingEvents: Event[] = [
     time: "10:00 AM - 10:00 PM",
     location: "Campus",
     description:
-      "Shutter Trails: A photography event where your lens tells the story.Capture moments, chase creativity with Adlib Arts!",
+      "SHUTTER TRAILS is a thrilling photography hunt where every riddle leads you closer to the perfect shot! Decode clues, chase moments, and capture stories—one frame at a time.",
     capacity: "100 participants",
     difficulty: "All levels"
   }

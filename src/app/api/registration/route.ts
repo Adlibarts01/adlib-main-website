@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/db/mongoose';
 import Registration from '@/lib/models/Registration';
 import { Resend } from 'resend';
@@ -6,7 +6,7 @@ import { Resend } from 'resend';
 // Initialize Resend client
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
     
@@ -62,23 +62,60 @@ export async function POST(request: Request) {
 
     // Send confirmation email
     if (process.env.RESEND_API_KEY) {
-      await resend.emails.send({
-        from: 'ADLib Photography Club <noreply@adlib.club>',
-        to: data.email,
-        subject: `Registration Confirmed: ${data.eventTitle}`,
-        html: `
-          <h1>Registration Confirmed!</h1>
-          <p>Hello ${data.name},</p>
-          <p>Your registration for ${data.eventTitle} has been received.</p>
-          <p><strong>Registration Details:</strong></p>
-          <ul>
-            <li>Name: ${data.name}</li>
-            <li>USN: ${data.usn}</li>
-            <li>Branch: ${data.branch}</li>
-            <li>Year: ${data.year}</li>
-          </ul>
-        `
-      });
+      try {
+        const whatsappLink = process.env.WHATSAPP_GROUP_LINK || "https://chat.whatsapp.com/example";
+        
+        const emailHtml = `
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="en">
+  <!-- ...existing email template... -->
+  <body style='background-color:rgb(245,245,245);font-family:ui-sans-serif;padding:40px'>
+    <table align="center" width="100%" style="background-color:rgb(255,255,255);max-width:600px;padding:40px">
+      <tbody>
+        <tr>
+          <td>
+            <div style="height:4px;width:80px;background-color:rgb(76,175,80);margin-bottom:60px"></div>
+            <h1>Registration Confirmed</h1>
+            <p>Hello ${data.name},</p>
+            <p>Your registration for ${data.eventTitle} has been confirmed.</p>
+            <div style="margin:20px 0">
+              <strong>Registration Details:</strong>
+              <ul>
+                <li>Name: ${data.name}</li>
+                <li>USN: ${data.usn}</li>
+                <li>Branch: ${data.branch}</li>
+                <li>Year: ${data.year}</li>
+              </ul>
+            </div>
+            <div style="margin-top:20px">
+              <p>Join our WhatsApp group for updates:</p>
+              <a href="${whatsappLink}" style="background-color:rgb(76,175,80);color:white;padding:10px 20px;text-decoration:none">
+                Join WhatsApp Group
+              </a>
+            </div>
+            <div style="margin-top:40px;border-top:1px solid #eee;padding-top:20px">
+              <p>Best regards,<br>AdLib Photography Club Team</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>`;
+
+        const { data: emailData, error } = await resend.emails.send({
+          from: process.env.FROM_EMAIL || "AdLib Photography Club <noreply@adlib.club>",
+          to: data.email,
+          subject: `Registration Confirmed: ${data.eventTitle}`,
+          html: emailHtml,
+        });
+
+        if (error) {
+          console.error('Email sending error:', error);
+        }
+      } catch (emailError) {
+        console.error('Error sending registration confirmation email:', emailError);
+      }
     }
 
     return NextResponse.json(
