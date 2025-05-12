@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/db/mongoose';
 import Registration from '@/lib/models/Registration';
 import { Resend } from 'resend';

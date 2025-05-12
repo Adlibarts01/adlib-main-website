@@ -27,7 +27,6 @@ export default function RegistrationForm({ isOpen, onClose, eventTitle, eventId 
     agreeToTerms: false,
   })
 
-  const [formStep, setFormStep] = useState(0)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState("")
@@ -79,7 +78,6 @@ export default function RegistrationForm({ isOpen, onClose, eventTitle, eventId 
           email: "",
           agreeToTerms: false,
         })
-        setFormStep(0)
         setIsSubmitted(false)
         onClose()
       }, 3000)
