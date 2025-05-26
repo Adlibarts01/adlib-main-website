@@ -19,7 +19,7 @@ const teamMembers = [
   { 
     id: 2,
     name: "Abhiday U",
-    role: "Member",
+    role: "Co - President",
     bio: "My love for wildlife photography began at eight, sparked by watching birds outside my window. Since then, the forests of India have become my second home a place where my passion for nature truly comes alive.",
     image: "/team/1000029485.jpg",
     instagram: "https://www.instagram.com/wildlife_nature_vibes?igsh=MXYzZDJtZTN5d3Qyag==",
@@ -71,7 +71,7 @@ const teamMembers = [
     name: "Vishnu Iyer",
     role: "Member",
     bio: "I am a passionate photography and video editor who loves capturing moments and transforming them into compelling stories. I focus on creating high-quality visuals that leave a lasting impact, whether it’s through stunning photoshoots or engaging video projects.",
-    image: "/team/IMG_20241011_134909_Burst20 - Siddharth.jpg",
+    image: "/team/vishnu.jpeg",
     instagram: "https://www.instagram.com/vishnuiyer_",
     linkedin: "https://www.linkedin.com/in/vishnuiyer-",
     email: "Vishnuiyer648492@gmail.com",
