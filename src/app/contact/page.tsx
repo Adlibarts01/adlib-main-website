@@ -129,8 +129,8 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-outfit text-lg font-semibold text-[#0A1D37]">Call Us</h3>
                     <p className="font-work-sans text-gray-600">
-                      <a href="tel:+15551234567" className="text-[#F7B32B] hover:underline">
-                        (555) 123-4567
+                      <a href="tel:7981103350" className="text-[#F7B32B] hover:underline">
+                      7981103350
                       </a>
                     </p>
                   </div>
@@ -151,26 +151,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="mt-10 rounded-lg bg-[#E5E5E5] p-6">
-                <h3 className="font-outfit text-lg font-semibold text-[#0A1D37]">Club Hours</h3>
-                <div className="font-work-sans mt-4 space-y-2 text-gray-600">
-                  <div className="flex justify-between">
-                    <span>Monday - Friday:</span>
-                    <span>10:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Saturday:</span>
-                    <span>12:00 PM - 4:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Sunday:</span>
-                    <span>Closed</span>
-                  </div>
-                </div>
-                <p className="font-work-sans mt-4 text-sm text-gray-500">
-                  Hours may vary during holidays and special events. Check our social media for updates.
-                </p>
-              </div>
+              
             </div>
 
             {/* Contact Form */}
