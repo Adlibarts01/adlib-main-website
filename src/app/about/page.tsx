@@ -42,7 +42,7 @@ export default function AboutPage() {
             </div>
             <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow-lg">
               <Image
-                src="/placeholder.svg?height=720&width=1280"
+                src="/team/WhatsApp Image 2025-05-27 at 10.41.43 PM.jpeg"
                 alt="Group of photographers at a club event"
                 fill
                 className="object-cover"

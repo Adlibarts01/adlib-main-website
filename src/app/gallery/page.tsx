@@ -85,7 +85,7 @@ const galleryItems = [
   {
     id: 9,
     title: "Portrait",
-    photographer: "Jamie Chen",
+    photographer: "Sujal R T",
     category: "Portrait",
     image: "/gallery/street vendor/IMG_20250209_231708_266.jpg",
     metadata: "f/5.6, 1/160s, ISO 200",
@@ -157,7 +157,7 @@ const galleryItems = [
   {
     id: 17,
     title: "Candid Moment",
-    photographer: "Jamie Chen",
+    photographer: "",
     category: "Macro",
     image: "/gallery/macro/1000070091.jpg",
     metadata: "f/4, 1/125s, ISO 400",
