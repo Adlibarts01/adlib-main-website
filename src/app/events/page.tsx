@@ -15,7 +15,25 @@ import {
 } from "@/components/ui/dialog"
 import { announcements, upcomingEvents } from "@/lib/data/events"
 
+// Define interfaces outside the component
+interface Event {
+  id: string;  // Changed from number to string
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  description: string;
+  capacity: string;
+  difficulty: string;
+}
 
+interface Announcement {
+  id: string;  // Changed from number to string
+  title: string;
+  date: string;
+  content: string;
+  isNew: boolean;
+}
 
 const container = {
   hidden: { opacity: 0 },
@@ -34,25 +52,7 @@ const item = {
 
 export default function EventsPage() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false)
-  interface Event {
-    id: number;
-    title: string;
-    date: string;
-    time: string;
-    location: string;
-    description: string;
-    capacity: string;
-    difficulty: string;
-  }
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
-  interface Announcement {
-    id: number;
-    title: string;
-    date: string;
-    content: string;
-    isNew: boolean;
-  }
-  
   const [selectedAnnouncement, setSelectedAnnouncement] = useState<Announcement | null>(null)
   const [isAnnouncementModalOpen, setIsAnnouncementModalOpen] = useState(false)
 
