@@ -46,7 +46,7 @@ export const upcomingEvents: Event[] = [
   {
     id: "1",
     title: "SHUTTER TRAILS",
-    date: "May 14-17, 2025",
+    date: "May 29-JUNE 2, 2025",
     time: "10:00 AM - 10:00 PM",
     location: "Campus",
     description:
