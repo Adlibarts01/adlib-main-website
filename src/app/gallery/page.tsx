@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import GalleryModal from "@/components/gallery-modal"
 import { motion } from "framer-motion"
 
-const categories = ["All", "Landscape", "Portrait", "Street", "Abstract", "Macro", "Wildlife", "Artitecture","Insects"]
+const categories = ["All", "Landscape", "Portrait", "Street", "Abstract", "Macro", "Wildlife", "Artitecture","Insects","Astrophotography"]
 
 const galleryItems = [
   {
@@ -40,7 +40,7 @@ const galleryItems = [
   {
     id: 4,
     title: "Light Patterns",
-    photographer: "Taylor Reed",
+    photographer: "Harshit Kumar",
     category: "Abstract",
     image: "/gallery/Abstract/IMG-20241005-WA0019.jpg",
     metadata: "f/11, 1/15s, ISO 200",
@@ -58,7 +58,7 @@ const galleryItems = [
   {
     id: 6,
     title: "Street Vendor",
-    photographer: "Casey Kim",
+    photographer: "Sujal R T",
     category: "Street",
     image: "/gallery/street vendor/IMG_20250206_083525_977.jpg",
     metadata: "f/4, 1/250s, ISO 400",
@@ -67,7 +67,7 @@ const galleryItems = [
   {
     id: 7,
     title: "Flower Close-up",
-    photographer: "Riley Johnson",
+    photographer: "",
     category: "Macro",
     image: "/gallery/macro/IMG-20241005-WA0015.jpg",
     metadata: "f/2.8, 1/60s, ISO 200",
@@ -94,7 +94,7 @@ const galleryItems = [
   {
     id: 10,
     title: "Shri Murudeshwara Temple",
-    photographer: "Shubham Kumar",
+    photographer: "Chaitanay Krishna",
     category: "Artitecture",
     image: "/gallery/artitecture/IMG-20241005-WA0035.jpg",
     metadata: "f/8, 1/250s, ISO 400",
@@ -130,7 +130,7 @@ const galleryItems = [
   {
     id: 14,
     title: "Bee",
-    photographer: "Sam Wilson",
+    photographer: "",
     category: "Insects",
     image: "/gallery/insects/IMG-20241005-WA0041.jpg",
     metadata: "f/5.6, 1/200s, ISO 100",
@@ -139,7 +139,7 @@ const galleryItems = [
   {
     id: 15,
     title: "Netravati Peak",
-    photographer: "Alex Morgan",
+    photographer: "",
     category: "Landscape",
     image: "/gallery/scenery/IMG-20241005-WA0036.jpg",
     metadata: "f/11, 1/60s, ISO 200",
@@ -175,12 +175,31 @@ const galleryItems = [
   {
     id: 19,
     title: "Abstract Car",
-    photographer: "Jordan Lee",
+    photographer: "",
     category: "Abstract",
     image: "/gallery/IMG-20241005-WA0033.jpg",
     metadata: "f/2.8, 1/30s, ISO 400",
     description: "Long exposure shot capturing light trails from moving vehicles on a busy street.",
+  },
+  {
+    id:20,
+    title: "F 35",
+    photographer: "",
+    category: "Abstract",
+    image:"/gallery/1000103590.jpg",
+    metadata: "f/4, 1/200s, ISO 800",
+    description : "A f35 fighter jet soaring through the sky, showcasing its sleek design and powerful engines."
+  },
+  {
+    id:21,
+    title: "full moon",
+    photographer: "Harshit Kumar",
+    category: "Astrophotography",
+    image:"/gallery/IMG-20241005-WA0028.jpg",
+    metadata: "f/11, 1/125s, ISO 100",
+    description : "A stunning full moon illuminating the night sky with its bright, silvery glow.",
   }
+
 ]
 
 const container = {

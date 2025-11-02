@@ -6,28 +6,9 @@ import { Instagram, Linkedin, Mail } from "lucide-react"
 import { motion } from "framer-motion"
 
 const teamMembers = [
+
   {
     id: 1,
-    name: "Rounak Gupta",
-    role: "President",
-    bio: "My love for photography began with quiet sunsets and intricate buildings. Nature’s calm and architecture’s symmetry inspire me deeply. Through my lens, I try to capture the beauty in stillness and structure.",
-    image: "/team/rounak.jpeg",
-    instagram: "https://www.instagram.com/rounak___gupta",
-    linkedin: "https://www.linkedin.com/in/rounak-gupta-416616229?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-    email: "guptarounak2021@gmail.com",
-  },
-  { 
-    id: 2,
-    name: "Abhiday U",
-    role: "Co - President",
-    bio: "My love for wildlife photography began at eight, sparked by watching birds outside my window. Since then, the forests of India have become my second home a place where my passion for nature truly comes alive.",
-    image: "/team/1000029485.jpg",
-    instagram: "https://www.instagram.com/wildlife_nature_vibes?igsh=MXYzZDJtZTN5d3Qyag==",
-    linkedin: "https://www.linkedin.com/in/abhiday-udhay-b2740624b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    email: "abhiday1727@gmail.com",
-  },
-  {
-    id: 3,
     name: "Deeksha Naik",
     role: "Co - Vice President ",
     bio: "specialized in colour grading, designing and script writing while capturing the essence of stories that often go unnoticed. Let's connect and create something inspiring together",
@@ -37,7 +18,7 @@ const teamMembers = [
     email: "deekshanaik226@gmail.com",
   },
   {
-    id: 4,
+    id: 2,
     name: "Aparna",
     role: "Treasurer",
     bio: "Documentary photographer focused on storytelling through visual narratives. Sam coordinates our photo walks, exhibitions, and social events, creating opportunities for members to connect and share their work.",
@@ -79,7 +60,7 @@ const teamMembers = [
   {
     id: 7,
     name: "Aditya Raj",
-    role: "Photographer & Editor",
+    role: "Co - President",
     bio: "Visionary photographer specializing in crafting striking, story-driven imagery. Expert in harnessing light, emotion, and perspective to produce captivating visuals that resonate and inspire.",
     image: "/team/add.jpeg",
     instagram: "https://www.instagram.com/aditya_raj1135/",
@@ -129,7 +110,7 @@ const teamMembers = [
   {
     id: 19,
     name: "Sujal RT",
-    role: "Member",
+    role: "Co - President",
     bio: "",
     image: "/team/Picsart_25-05-11_23-41-34-044.png",
     instagram: "https://www.instagram.com/_sujal_rt_?igsh=MWc5b2JzYXY3ZXR6",
@@ -139,7 +120,7 @@ const teamMembers = [
   {
     id: 12,
     name: "Shreyas A Jain ",
-    role: "Member",
+    role: "Videographer & PosterDesigner",
     bio: "I am a passionate photography and video editor, capturing moments and crafting impactful visuals.",
     image: "/team/1000103808.jpg",
     instagram: "https://www.instagram.com/shrey_yaz_/",
@@ -159,7 +140,7 @@ const teamMembers = [
   {
     id: 10,
     name: "Babul Kumar ",
-    role: "Member",
+    role: "Photographer",
     bio: "Wildlife photographer with a focus on conservation efforts. Morgan coordinates our community outreach programs and helps organize events that promote photography as a tool for social change.",
     image: "/team/IMG_20241027_135037 - Babul Kumar.jpg",
     instagram: "(https://www.instagram.com/babul_clickx_?igsh=MXNldHB1dHZ5d2d5ZQ==)",
@@ -169,8 +150,8 @@ const teamMembers = [
   {
     id: 20,
     name: "MS Rakshith ",
-    role: "Member",
-    bio: "I am a ameture photographer who loves to explore to new and creative fields in photography and try to push the boundaries of creativity by only utilising the things at hand. I believe every moment in life has potential to be brought to life by photography and share the glimpse of that moment  and experience with others.My love lies in capturing birds, insects,landscapes toys,architecture and many more....",
+    role: "Vice President",
+    bio: "I am a ameture photographer who loves to explore to new and creative fields in photography. I believe every moment in life has potential to be brought to life by photography and share the glimpse of that moment  and experience with others.",
     image: "/team/b942124c-9122-4dc2-b872-5898650081ee.jpeg",
     instagram: "https://www.instagram.com/rakshithphotography_0506?igsh=MW9ycnhneHBzaDN5aw==",
     linkedin: "https://www.linkedin.com/in/rakshithms056",
@@ -179,7 +160,7 @@ const teamMembers = [
   {
     id: 11,
     name: "Prerana Ballakkuraya",
-    role: "Member",
+    role: "Treasurer",
     bio: "Professor of Visual Arts with a specialization in digital photography. Dr. Zhang provides guidance to the club and helps connect us with university resources and opportunities.",
     image: "/team/IMG-20240824-WA0043 - PRERANA MB.jpg",
     instagram: "https://www.instagram.com/prerana__ballakkuraya?igsh=MWdzN2N1aWt4czh0Yw==",
@@ -190,7 +171,7 @@ const teamMembers = [
   {
     id: 14,
     name: "Gagannaag",
-    role: "Member",
+    role: "Vice President",
     bio: "I am a passionate photography and video editor who loves capturing moments and transforming them into compelling stories. I focus on creating high-quality visuals that leave a lasting impact, whether it’s through stunning photoshoots or engaging video projects.",
     image: "/team/IMG_5362 - Gagan aag Krishna.jpeg",
     instagram: "https://www.instagram.com/nagkrish_07/",

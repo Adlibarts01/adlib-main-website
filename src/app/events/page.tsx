@@ -35,6 +35,32 @@ interface Announcement {
   isNew: boolean;
 }
 
+interface RecentEvent {
+  id: string;
+  title: string;
+  date: string;
+  description: string;
+  imageUrl?: string;
+}
+
+const recentEvents: RecentEvent[] = [
+  {
+    id: "1",
+    title: "Portrait Workshop",
+    date: "Sep 15, 2025",
+    description: "Members learned advanced portrait lighting techniques with hands-on practice.",
+    imageUrl: "/events/portrait-workshop.jpg",
+  },
+  {
+    id: "2",
+    title: "Monsoon Photo Walk",
+    date: "Aug 28, 2025",
+    description: "A fun outdoor session capturing the beauty of the rainy season.",
+    imageUrl: "/events/monsoon-walk.jpg",
+  },
+  // Add more recent events here
+]
+
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -136,61 +162,37 @@ export default function EventsPage() {
               Register early as our events often reach capacity quickly. Club members receive priority registration.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="mx-auto max-w-4xl">
-            <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-0.5 before:bg-linear-to-b before:from-transparent before:via-[#F7B32B] before:to-transparent md:before:mx-auto md:before:translate-x-0">
-              {upcomingEvents.map((event, index) => (
-                <motion.div
-                  key={event.id}
-                  className="relative flex items-start md:justify-center"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <motion.div
-                    className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-[#F7B32B] text-white md:relative md:left-auto md:top-auto"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Calendar className="h-5 w-5" />
-                  </motion.div>
-
-                  <motion.div
-                    className="ml-12 rounded-lg bg-white dark:bg-[#1A2E4A] p-6 shadow-md md:ml-0 md:mr-0 md:max-w-md md:even:ml-12 md:odd:mr-12 hover:shadow-lg transition-shadow duration-300"
-                    whileHover={{ y: -5 }}
-                  >
-                    <div className="mb-2 font-outfit text-sm font-semibold text-[#F7B32B]">{event.date}</div>
-                    <h3 className="font-outfit text-xl font-bold text-[#0A1D37] dark:text-white">{event.title}</h3>
-                    <p className="font-work-sans mt-2 text-gray-600 dark:text-gray-300">{event.description}</p>
-                    <div className="mt-4 space-y-2">
-                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                        <Clock className="mr-2 h-4 w-4 text-[#F7B32B]" />
-                        <span>{event.time}</span>
-                      </div>
-                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                        <MapPin className="mr-2 h-4 w-4 text-[#F7B32B]" />
-                        <span>{event.location}</span>
-                      </div>
-                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                        <Users className="mr-2 h-4 w-4 text-[#F7B32B]" />
-                        <span>{event.capacity}</span>
-                      </div>
-                    </div>
-                    <div className="mt-4 flex justify-between items-center">
-                      <span className="font-outfit text-xs font-medium px-2 py-1 rounded-full bg-[#E5E5E5] dark:bg-[#0A1D37] text-[#0A1D37] dark:text-white">
-                        {event.difficulty}
-                      </span>
-                      <Button
-                        className="bg-[#0A1D37] dark:bg-[#F7B32B] dark:text-[#0A1D37] hover:bg-[#0A1D37]/90 dark:hover:bg-[#F7B32B]/90"
-                        onClick={() => openRegistration(event)}
-                      >
-                        Register
-                      </Button>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
+      {/* Recent Events Section */}
+      <section className="py-16 bg-white dark:bg-[#1A2E4A]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white">Recent Club Activities</h2>
+            <p className="font-work-sans mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Take a look at some of our latest workshops, photo walks, and club events.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {recentEvents.map((event) => (
+              <div key={event.id} className="bg-white dark:bg-[#223A5F] rounded-lg shadow-md overflow-hidden">
+                {event.imageUrl && (
+                  <img
+                    src={event.imageUrl}
+                    alt={event.title}
+                    className="w-full h-48 object-cover"
+                  />
+                )}
+                <div className="p-6">
+                  <h3 className="font-outfit text-xl font-bold text-[#0A1D37] dark:text-white mb-2">
+                    {event.title}
+                  </h3>
+                  <p className="font-work-sans text-sm text-[#F7B32B] mb-2">{event.date}</p>
+                  <p className="font-work-sans text-gray-600 dark:text-gray-300">{event.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
