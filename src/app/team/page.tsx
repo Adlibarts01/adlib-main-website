@@ -10,7 +10,7 @@ const teamMembers = [
   {
     id: 1,
     name: "Deeksha Naik",
-    role: "Co - Vice President ",
+    role: "President ",
     bio: "specialized in colour grading, designing and script writing while capturing the essence of stories that often go unnoticed. Let's connect and create something inspiring together",
     image: "/team/20241217_172407.jpg",
     instagram: "https://www.instagram.com/d_naik04?igsh=MXRqd2Q1OGNwZGJ2MQ==",
@@ -233,7 +233,7 @@ export default function TeamPage() {
   return (
     <div className="flex flex-col">
       {/* Page Header */}
-      <section className="bg-[#0A1D37] py-16 text-white">
+      <section className="bg-[#0A1D37] dark:bg-black py-16 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="font-outfit text-4xl font-bold md:text-5xl">Meet Our Team</h1>
@@ -245,7 +245,7 @@ export default function TeamPage() {
       </section>
 
       {/* Team Grid */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white dark:bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"

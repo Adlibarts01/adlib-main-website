@@ -1,13 +1,19 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { usePathname } from "next/navigation"
-import { Menu } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
-import { cn } from "@/lib/utils"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+import ThemeToggle from "@/components/theme-toggle";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -16,38 +22,42 @@ const navigation = [
   { name: "Team", href: "/team" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
-]
+];
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const pathname = usePathname()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled ? "bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-xs" : "bg-transparent",
+        isScrolled
+          ? "bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-xs"
+          : "bg-transparent"
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <Image
-                src="/home/Logo club.png"
-                alt="ADLIB Logo"
-                width={40}
-                height={40}
-                className="h-10 w-auto"
-              />
+              <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-12 h-12">
+                <Image
+                  src="/home/Logo club.png"
+                  alt="ADLIB Logo"
+                  width={40}
+                  height={40}
+                  className="h-8 w-auto"
+                />
+              </div>
             </Link>
           </div>
 
@@ -61,7 +71,7 @@ export default function Header() {
                   "font-outfit text-sm font-medium transition-colors",
                   pathname === item.href
                     ? "text-adlib-secondary"
-                    : "text-adlib-primary dark:text-white hover:text-adlib-secondary dark:hover:text-adlib-secondary",
+                    : "text-adlib-primary dark:text-white hover:text-adlib-secondary dark:hover:text-adlib-secondary"
                 )}
               >
                 {item.name}
@@ -73,24 +83,34 @@ export default function Header() {
           <div className="flex items-center space-x-4 md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="md:hidden" aria-label="Open menu">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="md:hidden"
+                  aria-label="Open menu"
+                >
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] p-0 border-l border-gray-200 dark:border-gray-800">
+              <SheetContent
+                side="right"
+                className="w-[300px] p-0 border-l border-gray-200 dark:border-gray-800"
+              >
                 <div className="flex flex-col h-full">
                   <div className="sr-only">
                     <SheetTitle>Navigation Menu</SheetTitle>
                   </div>
                   <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
                     <Link href="/" className="flex items-center">
-                      <Image
-                        src="/logo.png"
-                        alt="ADLIB Logo"
-                        width={40}
-                        height={40}
-                        className="h-10 w-auto"
-                      />
+                      <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-12 h-12">
+                        <Image
+                          src="/logo.png"
+                          alt="ADLIB Logo"
+                          width={40}
+                          height={40}
+                          className="h-8 w-auto"
+                        />
+                      </div>
                     </Link>
                     <SheetTrigger asChild>
                       {/* <Button variant="ghost" size="icon" aria-label="Close menu">
@@ -100,7 +120,7 @@ export default function Header() {
                       </Button> */}
                     </SheetTrigger>
                   </div>
-                  
+
                   <nav className="flex-1 overflow-auto py-6 px-4">
                     <div className="flex flex-col space-y-1">
                       {navigation.map((item) => (
@@ -119,18 +139,25 @@ export default function Header() {
                       ))}
                     </div>
                   </nav>
-                  
+
                   <div className="p-4 border-t border-gray-200 dark:border-gray-800">
                     <div className="flex justify-center">
-                      <span className="text-sm text-gray-500 dark:text-gray-400">© ADLIB {new Date().getFullYear()}</span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                        © ADLIB {new Date().getFullYear()}
+                      </span>
                     </div>
                   </div>
                 </div>
               </SheetContent>
             </Sheet>
           </div>
+
+          <div className="flex items-center gap-3">
+            {/* other header controls */}
+            <ThemeToggle /> {/* inserted shadcn-style theme toggle in top bar */}
+          </div>
         </div>
       </div>
     </header>
-  )
+  );
 }

@@ -130,7 +130,7 @@ const galleryItems = [
   {
     id: 14,
     title: "Bee",
-    photographer: "",
+    photographer: "Vrashabh Devatkal",
     category: "Insects",
     image: "/gallery/insects/IMG-20241005-WA0041.jpg",
     metadata: "f/5.6, 1/200s, ISO 100",
@@ -139,7 +139,7 @@ const galleryItems = [
   {
     id: 15,
     title: "Netravati Peak",
-    photographer: "",
+    photographer: "Shubham Kumar Gupta",
     category: "Landscape",
     image: "/gallery/scenery/IMG-20241005-WA0036.jpg",
     metadata: "f/11, 1/60s, ISO 200",
@@ -157,7 +157,7 @@ const galleryItems = [
   {
     id: 17,
     title: "Candid Moment",
-    photographer: "",
+    photographer: "Amulya Prakash",
     category: "Macro",
     image: "/gallery/macro/1000070091.jpg",
     metadata: "f/4, 1/125s, ISO 400",
@@ -175,7 +175,7 @@ const galleryItems = [
   {
     id: 19,
     title: "Abstract Car",
-    photographer: "",
+    photographer: "Arscker",
     category: "Abstract",
     image: "/gallery/IMG-20241005-WA0033.jpg",
     metadata: "f/2.8, 1/30s, ISO 400",
@@ -184,7 +184,7 @@ const galleryItems = [
   {
     id:20,
     title: "F 35",
-    photographer: "",
+    photographer: "Shreyas A Jain",
     category: "Abstract",
     image:"/gallery/1000103590.jpg",
     metadata: "f/4, 1/200s, ISO 800",
@@ -260,7 +260,7 @@ export default function GalleryPage() {
   return (
     <div className="flex flex-col">
       {/* Page Header */}
-      <section className="bg-[#0A1D37] py-16 text-white">
+      <section className="bg-[#0A1D37] dark:bg-black py-16 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="font-outfit text-4xl font-bold md:text-5xl">Our Photography Gallery</h1>
@@ -272,16 +272,16 @@ export default function GalleryPage() {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white dark:bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs defaultValue="All" className="w-full" onValueChange={setActiveCategory}>
             <div className="mb-10 overflow-x-auto">
-              <TabsList className="inline-flex w-auto p-1">
+              <TabsList className="inline-flex w-auto p-1 bg-gray-100 dark:bg-[#1A2E4A]">
                 {categories.map((category) => (
                   <TabsTrigger
                     key={category}
                     value={category}
-                    className="font-outfit px-4 py-2 data-[state=active]:bg-[#F7B32B] data-[state=active]:text-[#0A1D37]"
+                    className="font-outfit px-4 py-2 data-[state=active]:bg-[#F7B32B] data-[state=active]:text-[#0A1D37] dark:data-[state=active]:bg-[#F7B32B] dark:data-[state=active]:text-[#0A1D37] dark:text-gray-300"
                   >
                     {category}
                   </TabsTrigger>

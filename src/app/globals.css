@@ -69,6 +69,7 @@
   }
 }
 
+
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
@@ -381,3 +382,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Removed stray HTML and <script> that were appended to this CSS file.
+   That JavaScript must live in a React component (e.g. ThemeToggle in src/app/page.tsx)
+   or in a separate client-side script. Keeping JS/HTML inside this CSS caused PostCSS
+   to fail with "Unknown word document.documentElement.classList.toggle".
+*/
