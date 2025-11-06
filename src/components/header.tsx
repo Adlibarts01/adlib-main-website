@@ -104,14 +104,13 @@ export default function Header() {
                     <Link href="/" className="flex items-center">
                       <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-12 h-12">
                         <Image
-                          src="/logo.png"
+                          src="/home/Logo club.png"
                           alt="ADLIB Logo"
-                          width={40}
-                          height={40}
+                          width={32}
+                          height={32}
                           className="h-8 w-auto"
                         />
-                      </div>
-                    </Link>
+                      </div>                    </Link>
                     <SheetTrigger asChild>
                       {/* <Button variant="ghost" size="icon" aria-label="Close menu">
                         <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">

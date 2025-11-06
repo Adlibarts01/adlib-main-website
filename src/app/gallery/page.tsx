@@ -7,8 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import GalleryModal from "@/components/gallery-modal"
 import { motion } from "framer-motion"
 
-const categories = ["All", "Landscape", "Portrait", "Street", "Abstract", "Macro", "Wildlife", "Artitecture","Insects","Astrophotography"]
-
+const categories = ["All", "Landscape", "Portrait", "Street", "Abstract", "Macro", "Wildlife", "Architecture","Insects","Astrophotography"]
 const galleryItems = [
   {
     id: 1,
@@ -23,7 +22,7 @@ const galleryItems = [
     id: 2,
     title: "Clock Tower",
     photographer: "Rounak Gupta",
-    category: "Artitecture",
+    category: "Architecture",
     image: "/gallery/artitecture/IMG-20241005-WA0021.jpg",
     metadata: "f/2.8, 1/200s, ISO 400",
     description: "A close-up of a clock tower with intricate details and textures, showcasing architectural beauty.",
@@ -175,7 +174,7 @@ const galleryItems = [
   {
     id: 19,
     title: "Abstract Car",
-    photographer: "Arscker",
+    photographer: "Shubham Kumar Gupta",
     category: "Abstract",
     image: "/gallery/IMG-20241005-WA0033.jpg",
     metadata: "f/2.8, 1/30s, ISO 400",
@@ -198,7 +197,79 @@ const galleryItems = [
     image:"/gallery/IMG-20241005-WA0028.jpg",
     metadata: "f/11, 1/125s, ISO 100",
     description : "A stunning full moon illuminating the night sky with its bright, silvery glow.",
-  }
+  },
+  {
+    id:22,
+    title: "Spider",
+    photographer: "Rakshit M S",
+    category: "Insects",
+    image: "/gallery/spider raksh.jpg",
+    metadata: "f/5.6, 1/200s, ISO 100",
+    description: "Close-up of a spider's eye, showcasing intricate details and textures in macro photography.",
+  },
+  {
+    id:23,
+    title: "Boy and Dog",
+    photographer: "Sujal R T",
+    category: "Portrait",
+    image: "/gallery/sujal.jpg",
+    metadata: "f/4, 1/125s, ISO 200",
+    description: "A moment of a boy and a dog, showcasing their bond and friendship.",
+  },
+  {
+    id:24,
+    title: "Hibiscus",
+    photographer: "Shreyas A Jain",
+    category: "Macro",
+    image: "/gallery/20250925_072215(3).jpg",
+    metadata: "f/8, 1/60s, ISO 100",
+    description: "A close-up of a hibiscus flower, showcasing its intricate details and textures in macro photography.",
+  },
+  {
+    id:25,
+    title: "Cat",
+    photographer: "Vrashabh Devatkal",
+    category: "Wildlife",
+    image: "/gallery/animals/1000070093.jpg",
+    metadata: "f/8, 1/60s, ISO 100",
+    description: "A close-up of a cat's eye, showcasing its intricate details and textures in macro photography.",
+  },
+  {
+    id:26,
+    title: "squirrel",
+    photographer: "Babul kumar",
+    category: "Wildlife",
+    image: "/gallery/1000131092.jpg",
+    metadata: "f/8, 1/60s, ISO 100",
+    description: "A sqirrel resting on a tree, showcasing its natural habitat and behavior.",
+  },
+  {
+    id:27,
+    title: "Hard working man",
+    photographer: "Sujal R T",
+    category: "Portrait",
+    image: "/gallery/IMG_20250728_133524_432.jpg",
+    metadata: "f/5.6, 1/60s, ISO 800",
+    description: "An elderly farmer strides along a muddy ridge under a glowing sky, embodying strength carved by years of toil.",
+  },
+  {
+    id:28,
+    title: "cat",
+    photographer: "Vrashabh Devatkal",
+    category: "Wildlife",
+    image: "/gallery/IMG_20250713_211558_531.jpg",
+    metadata: "f/8, 1/60s, ISO 100",
+    description: "A cat sitting and showing its cute face",
+  },
+  {
+    id:29,
+    title: "Women On Fields",
+    photographer: "Sujal R T",
+    category: "Portrait",
+    image: "/gallery/IMG_20250728_141222_740.jpg",
+    metadata: "f/5.6, 1/60s, ISO 800",
+    description: "Women wade through emerald paddy fields, carrying tender saplings that promise tomorrow’s harvest.",
+  },
 
 ]
 

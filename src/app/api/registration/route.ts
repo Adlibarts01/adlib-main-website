@@ -129,9 +129,22 @@ export async function POST(request: NextRequest) {
     
   } catch (error) {
     console.error('Registration processing error:', error);
+    
+    // Ensure we always return JSON, even on errors
+    const errorMessage = error instanceof Error ? error.message : 'Failed to process registration';
+    
     return NextResponse.json(
-      { message: 'Failed to process registration' },
-      { status: 500 }
+      { 
+        message: errorMessage,
+        error: 'Registration failed',
+        success: false
+      },
+      { 
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
     );  
   }
 }
