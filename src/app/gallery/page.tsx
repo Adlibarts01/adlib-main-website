@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import GalleryModal from "@/components/gallery-modal"
 import { motion } from "framer-motion"
 
-const categories = ["All", "Landscape", "Portrait", "Street", "Abstract", "Macro", "Wildlife", "Architecture","Insects","Astrophotography"]
+const categories = ["All", "Landscape", "Portrait", "Street", "Abstract", "Macro", "Wildlife", "Architecture", "Insects", "Astrophotography"]
 const galleryItems = [
   {
     id: 1,
@@ -66,7 +66,7 @@ const galleryItems = [
   {
     id: 7,
     title: "Flower Close-up",
-    photographer: "",
+    photographer: "SUJAL R T",
     category: "Macro",
     image: "/gallery/macro/IMG-20241005-WA0015.jpg",
     metadata: "f/2.8, 1/60s, ISO 200",
@@ -181,25 +181,25 @@ const galleryItems = [
     description: "Long exposure shot capturing light trails from moving vehicles on a busy street.",
   },
   {
-    id:20,
+    id: 20,
     title: "F 35",
     photographer: "Shreyas A Jain",
     category: "Abstract",
-    image:"/gallery/1000103590.jpg",
+    image: "/gallery/1000103590.jpg",
     metadata: "f/4, 1/200s, ISO 800",
-    description : "A f35 fighter jet soaring through the sky, showcasing its sleek design and powerful engines."
+    description: "A f35 fighter jet soaring through the sky, showcasing its sleek design and powerful engines."
   },
   {
-    id:21,
+    id: 21,
     title: "full moon",
     photographer: "Harshit Kumar",
     category: "Astrophotography",
-    image:"/gallery/IMG-20241005-WA0028.jpg",
+    image: "/gallery/IMG-20241005-WA0028.jpg",
     metadata: "f/11, 1/125s, ISO 100",
-    description : "A stunning full moon illuminating the night sky with its bright, silvery glow.",
+    description: "A stunning full moon illuminating the night sky with its bright, silvery glow.",
   },
   {
-    id:22,
+    id: 22,
     title: "Spider",
     photographer: "Rakshit M S",
     category: "Insects",
@@ -208,7 +208,7 @@ const galleryItems = [
     description: "Close-up of a spider's eye, showcasing intricate details and textures in macro photography.",
   },
   {
-    id:23,
+    id: 23,
     title: "Boy and Dog",
     photographer: "Sujal R T",
     category: "Portrait",
@@ -217,7 +217,7 @@ const galleryItems = [
     description: "A moment of a boy and a dog, showcasing their bond and friendship.",
   },
   {
-    id:24,
+    id: 24,
     title: "Hibiscus",
     photographer: "Shreyas A Jain",
     category: "Macro",
@@ -226,7 +226,7 @@ const galleryItems = [
     description: "A close-up of a hibiscus flower, showcasing its intricate details and textures in macro photography.",
   },
   {
-    id:25,
+    id: 25,
     title: "Cat",
     photographer: "Vrashabh Devatkal",
     category: "Wildlife",
@@ -235,7 +235,7 @@ const galleryItems = [
     description: "A close-up of a cat's eye, showcasing its intricate details and textures in macro photography.",
   },
   {
-    id:26,
+    id: 26,
     title: "squirrel",
     photographer: "Babul kumar",
     category: "Wildlife",
@@ -244,7 +244,7 @@ const galleryItems = [
     description: "A sqirrel resting on a tree, showcasing its natural habitat and behavior.",
   },
   {
-    id:27,
+    id: 27,
     title: "Hard working man",
     photographer: "Sujal R T",
     category: "Portrait",
@@ -253,7 +253,7 @@ const galleryItems = [
     description: "An elderly farmer strides along a muddy ridge under a glowing sky, embodying strength carved by years of toil.",
   },
   {
-    id:28,
+    id: 28,
     title: "cat",
     photographer: "Vrashabh Devatkal",
     category: "Wildlife",
@@ -262,7 +262,7 @@ const galleryItems = [
     description: "A cat sitting and showing its cute face",
   },
   {
-    id:29,
+    id: 29,
     title: "Women On Fields",
     photographer: "Sujal R T",
     category: "Portrait",
