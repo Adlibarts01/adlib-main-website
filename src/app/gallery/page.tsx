@@ -156,7 +156,7 @@ const galleryItems = [
   {
     id: 17,
     title: "Candid Moment",
-    photographer: "Amulya Prakash",
+    photographer: "Shreyas A Jain",
     category: "Macro",
     image: "/gallery/macro/1000070091.jpg",
     metadata: "f/4, 1/125s, ISO 400",

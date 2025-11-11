@@ -63,7 +63,8 @@ export const upcomingEvents: Event[] = [
     capacity: "100 participants",
     difficulty: "All levels"
 
-  }
+  },
+
 ]
 
 /**
