@@ -219,7 +219,7 @@ const galleryItems = [
   {
     id: 24,
     title: "Hibiscus",
-    photographer: "Shreyas A Jain",
+    photographer: "Sanmathi Jain B J",
     category: "Macro",
     image: "/gallery/20250925_072215(3).jpg",
     metadata: "f/8, 1/60s, ISO 100",
