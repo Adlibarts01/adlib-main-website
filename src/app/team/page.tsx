@@ -118,6 +118,16 @@ const teamMembers = [
     email: "1si23bt001@sit.ac.in",
   },
   {
+    id: 13,
+    name: "Sanmathi Jain B J ",
+    role: "Photographer & Poster Designer",
+    bio: "A photographer and poster designer driven by creativity, clarity, and purpose.",
+    image: "/team/IMG_20250510_191518 - Sanmathi Jain.jpg",
+    instagram: "https://www.instagram.com/sanmathi_sannu___/",
+    linkedin: "https://www.linkedin.com/in/sanmathi-jain-624241292/",
+    email: "sanmathijain20@gmail.com",
+  },
+  {
     id: 12,
     name: "Shreyas A Jain ",
     role: "Videographer & PosterDesigner",
@@ -126,16 +136,6 @@ const teamMembers = [
     instagram: "https://www.instagram.com/shrey_yaz_/",
     linkedin: "https://www.linkedin.com/in/shreyas-jain-9a53002ab?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     email: "shreyasjain910@gmail.com",
-  },
-  {
-    id: 13,
-    name: "Sanmathi Jain B J ",
-    role: "Poster Designer",
-    bio: "Encrypted identity. Decrypted mind.",
-    image: "/team/IMG_20250510_191518 - Sanmathi Jain.jpg",
-    instagram: "https://www.instagram.com/sanmathi_sannu___/",
-    linkedin: "https://www.linkedin.com/in/sanmathi-jain-624241292/",
-    email: "sanmathijain20@gmail.com",
   },
   {
     id: 10,
