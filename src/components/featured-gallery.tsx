@@ -125,11 +125,7 @@ export default function FeaturedGallery() {
         </div>
 
         <div className="mt-12 text-center">
-<<<<<<< HEAD
           <Button asChild className="bg-[#0A1D37] hover:bg-[#0A1D37]/90 text-white">
-=======
-          <Button asChild className="bg-[#0A1D37] dark:bg-adlib-secondary dark:hover:bg-adlib-tertiary hover:bg-[#0A1D37]/90">
->>>>>>> refs/remotes/origin/main
             <Link href="/gallery">
               View Full Gallery
               <ArrowRight className="ml-2 h-4 w-4" />
