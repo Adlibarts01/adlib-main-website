@@ -31,14 +31,15 @@ export default function Header() {
   }, [])
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled ? "bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-xs" : "bg-transparent",
-      )}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+    <header className="fixed top-0 inset-x-0 z-50 flex justify-center px-4 pt-4 pointer-events-none">
+      <div
+        className={cn(
+          "flex items-center justify-between w-full max-w-4xl rounded-full px-6 py-3 transition-all duration-300 pointer-events-auto",
+          isScrolled
+            ? "bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-lg"
+            : "bg-white/70 dark:bg-black/70 backdrop-blur-sm shadow-md",
+        )}
+      >
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <Image
@@ -129,7 +130,6 @@ export default function Header() {
               </SheetContent>
             </Sheet>
           </div>
-        </div>
       </div>
     </header>
   )

@@ -125,7 +125,7 @@ export default function FeaturedGallery() {
         </div>
 
         <div className="mt-12 text-center">
-          <Button asChild className="bg-[#0A1D37] hover:bg-[#0A1D37]/90">
+          <Button asChild className="bg-[#0A1D37] hover:bg-[#0A1D37]/90 text-white">
             <Link href="/gallery">
               View Full Gallery
               <ArrowRight className="ml-2 h-4 w-4" />

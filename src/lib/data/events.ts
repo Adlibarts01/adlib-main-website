@@ -18,40 +18,26 @@ export interface Announcement {
 }
 
 export const announcements: Announcement[] = [
-  // {
-  //   id: 1,
-  //   title: "New Equipment Available",
-  //   date: "April 28, 2025",
-  //   content:
-  //     "We've added new Sony Alpha a7 IV cameras and lenses to our equipment library. Members can now borrow these for their projects.",
-  //   isNew: true,
-  // },
-  // {
-  //   id: 2,
-  //   title: "Summer Exhibition Call for Submissions",
-  //   date: "April 15, 2025",
-  //   content: "Submit your best work for our annual summer exhibition by July 1st. This year's theme is 'Urban Nature'.",
-  //   isNew: true,
-  // },
-  // {
-  //   id: 3,
-  //   title: "Workshop Schedule Change",
-  //   date: "April 10, 2025",
-  //   content: "The Portrait Lighting Masterclass has been rescheduled from May 25 to June 2 due to venue availability.",
-  //   isNew: false,
-  // },
+  {
+    id: "1",
+    title: "Visual Storytelling Workshop — Register Now!",
+    date: "March 9, 2026",
+    content:
+      "Ad-Lib Arts is hosting an immersive Photography & Filmmaking Workshop on March 13, 2026 at 5:00 PM in Birla Auditorium, SIT Tumkur. Learn to capture compelling photographs, compose powerful shots, and edit like a pro. All skill levels welcome — don't miss out!",
+    isNew: true,
+  },
 ]
 
 export const upcomingEvents: Event[] = [
   {
     id: "1",
-    title: "SHUTTER TRAILS",
-    date: "May 29-JUNE 2, 2025",
-    time: "10:00 AM - 10:00 PM",
-    location: "Campus",
+    title: "VISUAL STORYTELLING WORKSHOP",
+    date: "March 13, 2026",
+    time: "5:00 PM",
+    location: "Birla Auditorium, SIT Tumkur",
     description:
-      "SHUTTER TRAILS is a thrilling photography hunt where every riddle leads you closer to the perfect shot! Decode clues, chase moments, and capture stories—one frame at a time.",
-    capacity: "100 participants",
+      "Join Ad-Lib Arts for an immersive photography and filmmaking workshop designed to help you master the complete visual storytelling process. In this hands-on session, you will learn how to capture compelling photographs, compose visually powerful shots, and transform your visuals through professional editing tools.",
+    capacity: "Open to all",
     difficulty: "All levels"
   }
 ]

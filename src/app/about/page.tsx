@@ -23,8 +23,8 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 items-center">
             <div>
-              <h2 className="font-outfit text-3xl font-bold text-[#0A1D37]">Our Story</h2>
-              <div className="font-work-sans mt-6 space-y-4 text-gray-600">
+              <h2 className="font-outfit text-3xl font-bold text-white">Our Story</h2>
+              <div className="font-work-sans mt-6 space-y-4 text-gray-300">
                 <p>
                   Adlib Photography Club was founded in 2018 by a small group of photography students who wanted to
                   create a supportive community for learning and creative exploration beyond the classroom.
@@ -110,7 +110,7 @@ export default function AboutPage() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-outfit text-3xl font-bold text-[#0A1D37]">What We Offer</h2>
+            <h2 className="font-outfit text-3xl font-bold text-white">What We Offer</h2>
             <p className="font-work-sans mt-4 text-gray-600">
               As a member of Adlib Photography Club, you&apos;ll have access to a variety of resources and opportunities.
             </p>

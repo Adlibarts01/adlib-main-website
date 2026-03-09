@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
     // Send confirmation email
     if (process.env.RESEND_API_KEY) {
       try {
-        const whatsappLink = process.env.WHATSAPP_GROUP_LINK || "https://chat.whatsapp.com/example";
+        const whatsappLink = "https://chat.whatsapp.com/Cbu618FKcOsDRoMX4ZOqga?mode=gi_t";
         
         const emailHtml = `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
