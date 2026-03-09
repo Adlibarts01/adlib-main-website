@@ -2,6 +2,14 @@ import Image from "next/image"
 // Removing unused imports
 import { Camera, Users, ImageIcon } from "lucide-react"
 import ApertureIcon from "@/components/aperture-icon"
+import { LucideIcon } from "lucide-react"
+
+type ValueItem = {
+  icon?: LucideIcon
+  label: string
+  desc: string
+  isAperture?: boolean
+}
 
 export default function AboutPage() {
   return (
@@ -79,12 +87,12 @@ export default function AboutPage() {
               { label: "Creative Vision", desc: "We encourage members to develop their unique artistic voice and perspective through photography.", isAperture: true },
               { icon: Users, label: "Community Learning", desc: "We learn and grow together, sharing knowledge, techniques, and constructive feedback." },
               { icon: ImageIcon, label: "Visual Storytelling", desc: "We value photography's power to communicate ideas, emotions, and narratives through visual means." },
-            ].map(({ icon: Icon, label, desc, isAperture }: any) => (
+            ].map(({ icon: Icon, label, desc, isAperture }: ValueItem) => (
               <div key={label} className="glass-card p-6 flex flex-col gap-4">
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-500/12 border border-amber-500/15">
                   {isAperture
                     ? <ApertureIcon className="h-5 w-5 text-amber-400" bladeCount={6} animated={false} />
-                    : <Icon className="h-5 w-5 text-amber-400" />}
+                    : Icon && <Icon className="h-5 w-5 text-amber-400" />}
                 </div>
                 <div>
                   <h3 className="font-outfit text-base font-bold text-white">{label}</h3>

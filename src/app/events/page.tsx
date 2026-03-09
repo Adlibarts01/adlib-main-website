@@ -314,9 +314,6 @@ export default function EventsPage() {
               <p className="font-work-sans mt-2 text-white/45 max-w-2xl mx-auto">
                 Explore our past events, workshops, and activities. Each event includes detailed descriptions and photo galleries.
               </p>
-              <p className="font-work-sans mt-3 text-xs text-white/30 max-w-2xl mx-auto">
-                To add or edit events, modify the events data in <code className="bg-white/8 px-2 py-1 rounded text-amber-400/70">src/lib/data/events.ts</code>
-              </p>
             </div>
           </motion.div>
           
