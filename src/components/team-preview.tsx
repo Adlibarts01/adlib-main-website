@@ -44,11 +44,11 @@ const teamMembers = [
 
 export default function TeamPreview() {
   return (
-    <section className="py-16 md:py-24 bg-[#0A1D37] text-white">
+    <section className="py-16 md:py-24 section-dark text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h2 className="font-outfit text-3xl font-bold md:text-4xl">Meet Our Team</h2>
-          <p className="font-work-sans mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="font-work-sans mt-4 text-lg text-white/55 max-w-2xl mx-auto">
             The passionate photographers and educators behind Adlib Photography Club.
           </p>
         </div>
@@ -56,7 +56,7 @@ export default function TeamPreview() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {teamMembers.map((member) => (
             <div key={member.id} className="group text-center">
-              <div className="relative mx-auto h-48 w-48 overflow-hidden rounded-full border-4 border-[#F7B32B]">
+              <div className="relative mx-auto h-48 w-48 overflow-hidden rounded-full border-4 border-amber-400/50">
                 <Image
                   src={member.image || "/placeholder.svg"}
                   alt={member.name}
@@ -66,19 +66,19 @@ export default function TeamPreview() {
               </div>
               <div className="mt-6 space-y-2">
                 <h3 className="font-outfit text-xl font-bold">{member.name}</h3>
-                <p className="font-outfit text-sm font-light text-[#F7B32B]">{member.role}</p>
-                <p className="font-work-sans text-sm text-gray-300">{member.bio}</p>
+                <p className="font-outfit text-sm font-light text-amber-400">{member.role}</p>
+                <p className="font-work-sans text-sm text-white/50">{member.bio}</p>
                 <div className="flex justify-center space-x-4 pt-2">
                   <a
                     href={member.instagram}
-                    className="text-gray-300 hover:text-[#F7B32B] transition-colors"
+                    className="text-white/30 hover:text-amber-400 transition-colors"
                     aria-label={`${member.name}'s Instagram`}
                   >
                     <Instagram className="h-5 w-5" />
                   </a>
                   <a
                     href={member.linkedin}
-                    className="text-gray-300 hover:text-[#F7B32B] transition-colors"
+                    className="text-white/30 hover:text-amber-400 transition-colors"
                     aria-label={`${member.name}'s LinkedIn`}
                   >
                     <Linkedin className="h-5 w-5" />
@@ -90,7 +90,7 @@ export default function TeamPreview() {
         </div>
 
         <div className="mt-12 text-center">
-          <Button asChild variant="outline" className="border-white text-white hover:bg-white hover:text-[#0A1D37]">
+          <Button asChild className="bg-amber-500 text-black hover:bg-amber-400 rounded-full font-semibold px-6">
             <Link href="/team">
               View Full Team
               <ArrowRight className="ml-2 h-4 w-4" />

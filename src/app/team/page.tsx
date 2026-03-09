@@ -233,11 +233,13 @@ export default function TeamPage() {
   return (
     <div className="flex flex-col">
       {/* Page Header */}
-      <section className="bg-[#0A1D37] dark:bg-black py-16 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-dark py-24 text-white relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{background: 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(212,160,66,0.12) 0%, transparent 70%)'}} />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="font-outfit text-4xl font-bold md:text-5xl">Meet Our Team</h1>
-            <p className="font-work-sans mt-4 text-lg text-gray-300">
+            <span className="inline-block mb-4 px-3 py-1 rounded-full text-xs font-medium tracking-widest uppercase bg-amber-500/15 text-amber-400 border border-amber-500/20">The People</span>
+            <h1 className="font-outfit text-4xl font-bold md:text-5xl"><span className="text-amber-gradient">Meet Our</span> Team</h1>
+            <p className="font-work-sans mt-4 text-lg text-white/55">
               The passionate photographers and educators behind Adlib Photography Club.
             </p>
           </div>
@@ -245,7 +247,7 @@ export default function TeamPage() {
       </section>
 
       {/* Team Grid */}
-      <section className="py-16 md:py-24 bg-white dark:bg-black">
+      <section className="py-16 md:py-24 section-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
@@ -262,7 +264,7 @@ export default function TeamPage() {
                 onHoverStart={() => setHoveredMember(member.id)}
                 onHoverEnd={() => setHoveredMember(null)}
               >
-                <div className="relative mx-auto h-56 w-56 overflow-hidden rounded-[30%] border-4 border-[#F7B32B] transition-all duration-500 group-hover:rounded-[20%]">
+                <div className="relative mx-auto h-56 w-56 overflow-hidden rounded-[30%] border-4 border-amber-400/50 transition-all duration-500 group-hover:rounded-[20%]">
                   <Image
                     src={member.image || "/placeholder.svg"}
                     alt={member.name}
@@ -272,13 +274,13 @@ export default function TeamPage() {
                   <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </div>
                 <div className="mt-6 text-center">
-                  <h3 className="font-outfit text-xl font-bold text-[#0A1D37] dark:text-white">{member.name}</h3>
-                  <p className="font-outfit text-sm font-light text-[#F7B32B]">{member.role}</p>
-                  <p className="font-work-sans mt-3 text-gray-600 dark:text-gray-300">{member.bio}</p>
+                  <h3 className="font-outfit text-xl font-bold text-white">{member.name}</h3>
+                  <p className="font-outfit text-sm font-light text-amber-400">{member.role}</p>
+                  <p className="font-work-sans mt-3 text-white/50">{member.bio}</p>
                   <div className="mt-4 flex justify-center space-x-4">
                     <motion.a
                       href={member.instagram}
-                      className="text-gray-400 hover:text-[#F7B32B] transition-colors"
+                      className="text-white/30 hover:text-amber-400 transition-colors"
                       aria-label={`${member.name}'s Instagram`}
                       whileHover={{ scale: 1.2 }}
                       whileTap={{ scale: 0.9 }}
@@ -287,7 +289,7 @@ export default function TeamPage() {
                     </motion.a>
                     <motion.a
                       href={member.linkedin}
-                      className="text-gray-400 hover:text-[#F7B32B] transition-colors"
+                      className="text-white/30 hover:text-amber-400 transition-colors"
                       aria-label={`${member.name}'s LinkedIn`}
                       whileHover={{ scale: 1.2 }}
                       whileTap={{ scale: 0.9 }}
@@ -296,7 +298,7 @@ export default function TeamPage() {
                     </motion.a>
                     <motion.a
                       href={`mailto:${member.email}`}
-                      className="text-gray-400 hover:text-[#F7B32B] transition-colors"
+                      className="text-white/30 hover:text-amber-400 transition-colors"
                       aria-label={`Email ${member.name}`}
                       whileHover={{ scale: 1.2 }}
                       whileTap={{ scale: 0.9 }}

@@ -163,11 +163,15 @@ export default function EventsPage() {
   return (
     <div className="flex flex-col">
       {/* Page Header */}
-      <section className="bg-[#0A1D37] dark:bg-black py-16 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="font-outfit text-4xl font-bold md:text-5xl">Events & Workshops</h1>
-            <p className="font-work-sans mt-4 text-lg text-gray-300">
+      <section className="py-24 md:py-32 section-dark relative overflow-hidden">
+        <div className="absolute inset-0" style={{background:"radial-gradient(ellipse at 50% 60%, rgba(212,160,66,0.06) 0%, transparent 70%)"}} />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="mx-auto max-w-3xl text-center space-y-4">
+            <div className="inline-flex items-center gap-2 glass-card px-4 py-1.5 rounded-full w-fit mx-auto" style={{borderRadius:"9999px"}}>
+              <span className="font-outfit text-xs font-medium text-amber-400/80 uppercase tracking-widest">Schedule</span>
+            </div>
+            <h1 className="font-outfit text-4xl font-bold text-white md:text-5xl">Events &amp; <span className="text-amber-gradient">Workshops</span></h1>
+            <p className="font-work-sans text-base text-white/50">
               Join us for workshops, photo walks, exhibitions, and other exciting photography events.
             </p>
           </div>
@@ -175,11 +179,11 @@ export default function EventsPage() {
       </section>
 
       {/* Announcements Section */}
-      <section className="py-10 bg-[#F7B32B]/10 dark:bg-[#F7B32B]/5">
+      <section className="py-12 section-surface frosted-section">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h2 className="font-outfit text-2xl font-bold text-[#0A1D37] dark:text-white flex items-center">
-              <Bell className="mr-2 h-5 w-5 text-[#F7B32B]" />
+            <h2 className="font-outfit text-2xl font-bold text-white flex items-center">
+              <Bell className="mr-2 h-5 w-5 text-amber-400" />
               Announcements
             </h2>
           </div>
@@ -188,24 +192,24 @@ export default function EventsPage() {
             {announcements.map((announcement) => (
               <motion.div
                 key={announcement.id}
-                className="bg-white dark:bg-[#1A2E4A] rounded-lg shadow-md overflow-hidden relative cursor-pointer"
+                className="glass-card !rounded-2xl overflow-hidden relative cursor-pointer"
                 variants={item}
                 whileHover={{ y: -5 }}
                 onClick={() => openAnnouncementModal(announcement)}
               >
                 {announcement.isNew && (
                   <div className="absolute top-0 right-0">
-                    <div className="bg-[#F7B32B] text-[#0A1D37] text-xs font-bold px-3 py-1 font-outfit transform rotate-0 origin-top-right">
+                    <div className="bg-amber-500 text-black text-xs font-bold px-3 py-1 font-outfit">
                       NEW
                     </div>
                   </div>
                 )}
                 <div className="p-6">
-                  <h3 className="font-outfit text-xl font-bold text-[#0A1D37] dark:text-white mb-2">
+                  <h3 className="font-outfit text-lg font-bold text-white mb-2">
                     {announcement.title}
                   </h3>
-                  <p className="font-outfit text-sm text-[#F7B32B] mb-3">{announcement.date}</p>
-                  <p className="font-work-sans text-gray-600 dark:text-gray-300">{announcement.content}</p>
+                  <p className="font-outfit text-xs text-amber-400 mb-3">{announcement.date}</p>
+                  <p className="font-work-sans text-sm text-white/55">{announcement.content}</p>
                 </div>
               </motion.div>
             ))}
@@ -215,7 +219,7 @@ export default function EventsPage() {
 
       {/* Upcoming Events Section */}
       {upcomingEvents.length > 0 && (
-        <section className="py-16 md:py-24 bg-white dark:bg-black">
+        <section className="py-16 md:py-24 section-dark">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               className="mb-12 text-center"
@@ -223,8 +227,8 @@ export default function EventsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white">Upcoming Events</h2>
-              <p className="font-work-sans mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              <h2 className="font-outfit text-3xl font-bold text-white">Upcoming Events</h2>
+              <p className="font-work-sans mt-4 text-white/50 max-w-2xl mx-auto">
                 Register early as our events often reach capacity quickly. Club members receive priority registration.
               </p>
             </motion.div>
@@ -239,45 +243,43 @@ export default function EventsPage() {
                 <motion.div
                   key={event.id}
                   variants={item}
-                  className="group relative bg-white dark:bg-[#1A2E4A] rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden border-2 border-gray-200/50 dark:border-gray-700/50 transition-all duration-300"
+                  className="group relative glass-card !rounded-2xl overflow-hidden transition-all duration-300"
                   whileHover={{ y: -4 }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#F7B32B]/0 to-[#F7B32B]/0 group-hover:from-[#F7B32B]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
-                  
                   <div className="p-6 md:p-8 relative z-10">
                     <div className="flex items-start justify-between gap-3 mb-4">
-                      <h3 className="font-outfit text-2xl font-bold text-[#0A1D37] dark:text-white flex-1">
+                      <h3 className="font-outfit text-xl font-bold text-white flex-1">
                         {event.title}
                       </h3>
-                      <span className="font-outfit text-xs text-[#F7B32B] bg-gradient-to-r from-[#F7B32B]/20 to-[#F7B32B]/10 px-3 py-1 rounded-full border border-[#F7B32B]/30 whitespace-nowrap">
+                      <span className="font-outfit text-xs text-amber-400 bg-amber-500/15 px-3 py-1 rounded-full border border-amber-500/20 whitespace-nowrap">
                         {event.date}
                       </span>
                     </div>
                     
                     <div className="space-y-3 mb-4">
-                      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-                        <Clock className="h-4 w-4 text-[#F7B32B]" />
+                      <div className="flex items-center gap-2 text-sm text-white/50">
+                        <Clock className="h-4 w-4 text-amber-400/70" />
                         <span className="font-work-sans">{event.time}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-                        <MapPin className="h-4 w-4 text-[#F7B32B]" />
+                      <div className="flex items-center gap-2 text-sm text-white/50">
+                        <MapPin className="h-4 w-4 text-amber-400/70" />
                         <span className="font-work-sans">{event.location}</span>
                       </div>
                       {event.capacity && (
-                        <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                        <div className="flex items-center gap-2 text-sm text-white/50">
                           <span className="font-work-sans">Capacity: {event.capacity}</span>
                         </div>
                       )}
                       {event.difficulty && (
                         <div className="flex items-center gap-2 text-sm">
-                          <span className="font-work-sans px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                          <span className="font-work-sans px-3 py-1 rounded-full bg-white/8 text-white/60">
                             {event.difficulty}
                           </span>
                         </div>
                       )}
                     </div>
                     
-                    <p className="font-work-sans text-gray-600 dark:text-gray-300 mb-6 leading-relaxed line-clamp-3">
+                    <p className="font-work-sans text-white/50 mb-6 leading-relaxed line-clamp-3 text-sm">
                       {event.description}
                     </p>
                     
@@ -286,7 +288,7 @@ export default function EventsPage() {
                         setSelectedEvent(event)
                         setIsRegistrationOpen(true)
                       }}
-                      className="w-full bg-gradient-to-r from-[#F7B32B] to-[#F7B32B]/80 text-[#0A1D37] hover:from-[#F7B32B]/90 hover:to-[#F7B32B]/70 shadow-lg"
+                      className="w-full bg-amber-500 text-black hover:bg-amber-400 font-outfit font-semibold rounded-full shadow-[0_4px_16px_rgba(212,160,66,0.3)]"
                     >
                       Register Now
                     </Button>
@@ -299,7 +301,7 @@ export default function EventsPage() {
       )}
 
       {/* Events Gallery Section */}
-      <section className="py-16 bg-gradient-to-b from-white via-gray-50/50 to-white dark:from-[#1A2E4A] dark:via-[#0A1D37]/50 dark:to-[#1A2E4A]">
+      <section className="py-16 section-surface frosted-section">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="mb-12"
@@ -308,12 +310,12 @@ export default function EventsPage() {
             transition={{ duration: 0.6 }}
           >
             <div className="text-center mb-8">
-              <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white md:text-4xl">Our Events</h2>
-              <p className="font-work-sans mt-2 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              <h2 className="font-outfit text-3xl font-bold text-white md:text-4xl">Our Events</h2>
+              <p className="font-work-sans mt-2 text-white/45 max-w-2xl mx-auto">
                 Explore our past events, workshops, and activities. Each event includes detailed descriptions and photo galleries.
               </p>
-              <p className="font-work-sans mt-3 text-sm text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
-                💡 To add or edit events, modify the events data in <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">src/lib/data/events.ts</code>
+              <p className="font-work-sans mt-3 text-xs text-white/30 max-w-2xl mx-auto">
+                To add or edit events, modify the events data in <code className="bg-white/8 px-2 py-1 rounded text-amber-400/70">src/lib/data/events.ts</code>
               </p>
             </div>
           </motion.div>
@@ -328,11 +330,11 @@ export default function EventsPage() {
               <motion.div
                 key={event.id}
                 variants={item}
-                className="group relative bg-white dark:bg-[#223A5F] rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden border-2 border-gray-200/50 dark:border-gray-700/50 transition-all duration-300"
+                className="group relative glass-card !rounded-2xl overflow-hidden transition-all duration-300"
                 whileHover={{ y: -4 }}
               >
                 {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#F7B32B]/0 to-[#F7B32B]/0 group-hover:from-[#F7B32B]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-400/0 to-amber-400/0 group-hover:from-amber-400/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
                 
                 {/* Event Header */}
                 <motion.div 
@@ -345,13 +347,13 @@ export default function EventsPage() {
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-3 mb-4">
                         <motion.h3 
-                          className="font-outfit text-2xl md:text-3xl font-bold text-[#0A1D37] dark:text-white"
+                          className="font-outfit text-xl md:text-2xl font-bold text-white"
                           whileHover={{ scale: 1.02 }}
                         >
                           {event.title}
                         </motion.h3>
                         <motion.span 
-                          className="font-outfit text-sm text-[#F7B32B] bg-gradient-to-r from-[#F7B32B]/20 to-[#F7B32B]/10 px-4 py-1.5 rounded-full border border-[#F7B32B]/30"
+                          className="font-outfit text-xs text-amber-400 bg-amber-500/15 px-4 py-1.5 rounded-full border border-amber-500/20"
                           whileHover={{ scale: 1.05 }}
                         >
                           {event.date}
@@ -359,19 +361,19 @@ export default function EventsPage() {
                       </div>
                       {(event.location || event.time) && (
                         <motion.div 
-                          className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-300 mb-3"
+                          className="flex flex-wrap items-center gap-4 text-sm text-white/45 mb-3"
                           initial={{ opacity: 0.8 }}
                           whileHover={{ opacity: 1 }}
                         >
                           {event.location && (
-                            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-100/50 dark:bg-gray-800/50">
-                              <MapPin className="h-4 w-4 text-[#F7B32B]" />
+                            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5">
+                              <MapPin className="h-4 w-4 text-amber-400/70" />
                               <span className="font-work-sans">{event.location}</span>
                             </div>
                           )}
                           {event.time && (
-                            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-100/50 dark:bg-gray-800/50">
-                              <Clock className="h-4 w-4 text-[#F7B32B]" />
+                            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5">
+                              <Clock className="h-4 w-4 text-amber-400/70" />
                               <span className="font-work-sans">{event.time}</span>
                             </div>
                           )}
@@ -390,16 +392,16 @@ export default function EventsPage() {
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="ml-4 rounded-full bg-gray-100/50 dark:bg-gray-800/50 hover:bg-[#F7B32B]/20 dark:hover:bg-[#F7B32B]/20"
+                        className="ml-4 rounded-full bg-white/5 hover:bg-amber-500/15"
                         onClick={(e) => {
                           e.stopPropagation()
                           toggleEventExpansion(event.id)
                         }}
                       >
                         {expandedEventId === event.id ? (
-                          <ChevronUp className="h-5 w-5 text-[#F7B32B]" />
+                          <ChevronUp className="h-5 w-5 text-amber-400" />
                         ) : (
-                          <ChevronDown className="h-5 w-5 text-[#F7B32B]" />
+                          <ChevronDown className="h-5 w-5 text-amber-400" />
                         )}
                       </Button>
                     </motion.div>
@@ -414,11 +416,11 @@ export default function EventsPage() {
                       initial="hidden"
                       animate="show"
                       exit="exit"
-                      className="overflow-hidden border-t border-gray-200/50 dark:border-gray-700/50"
+                      className="overflow-hidden border-t border-white/8"
                     >
-                      <div className="px-6 md:px-8 pb-6 md:pb-8 pt-4 bg-gradient-to-b from-transparent to-gray-50/50 dark:to-gray-900/20">
+                      <div className="px-6 md:px-8 pb-6 md:pb-8 pt-4">
                         <motion.p 
-                          className="font-work-sans text-gray-700 dark:text-gray-300 mb-8 leading-relaxed text-base"
+                          className="font-work-sans text-white/55 mb-8 leading-relaxed text-sm"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.1 }}
@@ -434,12 +436,12 @@ export default function EventsPage() {
                           animate="show"
                         >
                           <motion.h4 
-                            className="font-outfit text-xl font-semibold text-[#0A1D37] dark:text-white mb-6 flex items-center gap-2"
+                            className="font-outfit text-base font-semibold text-white mb-6 flex items-center gap-2"
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.15 }}
                           >
-                            <span className="h-1 w-8 bg-gradient-to-r from-[#F7B32B] to-transparent rounded-full" />
+                            <span className="h-1 w-8 bg-gradient-to-r from-amber-400 to-transparent rounded-full" />
                             Event Photos ({event.photos.length})
                           </motion.h4>
                           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -478,16 +480,16 @@ export default function EventsPage() {
       </section>
 
       {/* Propose Event Section */}
-      <section className="py-16 bg-[#E5E5E5] dark:bg-[#0A1D37]/50">
+      <section className="py-16 section-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white">Have an Event Idea?</h2>
-            <p className="font-work-sans mt-4 text-gray-600 dark:text-gray-300">
+            <h2 className="font-outfit text-3xl font-bold text-white">Have an Event Idea?</h2>
+            <p className="font-work-sans mt-4 text-white/50">
               We welcome suggestions from our members. If you have an idea for a workshop, photo walk, or other event,
               let us know!
             </p>
             <div className="mt-6">
-              <Button asChild className="bg-[#F7B32B] text-[#0A1D37] hover:bg-[#F7B32B]/90">
+              <Button asChild className="bg-amber-500 text-black hover:bg-amber-400 rounded-full font-outfit font-semibold px-8 shadow-[0_4px_16px_rgba(212,160,66,0.3)]">
                 <Link href="/contact">Propose an Event</Link>
               </Button>
             </div>
@@ -510,20 +512,20 @@ export default function EventsPage() {
         {selectedAnnouncement && (
           <DialogContent className="sm:max-w-md">
             <DialogHeader>
-              <DialogTitle className="text-xl font-bold text-[#0A1D37] dark:text-white">
+              <DialogTitle className="text-xl font-bold text-white">
                 {selectedAnnouncement.title}
               </DialogTitle>
-              <DialogDescription className="font-outfit text-sm text-[#F7B32B]">
+              <DialogDescription className="font-outfit text-sm text-amber-400">
                 {selectedAnnouncement.date}
               </DialogDescription>
             </DialogHeader>
             <div className="mt-2">
-              <p className="font-work-sans text-gray-600 dark:text-gray-300">{selectedAnnouncement.content}</p>
+              <p className="font-work-sans text-white/60 text-sm">{selectedAnnouncement.content}</p>
             </div>
             <div className="mt-4 flex justify-end">
               <Button 
                 onClick={closeAnnouncementModal}
-                className="bg-[#0A1D37] dark:bg-[#F7B32B] dark:text-[#0A1D37] hover:bg-[#0A1D37]/90 dark:hover:bg-[#F7B32B]/90"
+                className="bg-amber-500 text-black hover:bg-amber-400 rounded-full font-outfit font-semibold"
               >
                 Close
               </Button>

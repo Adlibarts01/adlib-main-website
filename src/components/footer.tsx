@@ -4,116 +4,76 @@ import { Logo } from "@/components/logo"
 
 export default function Footer() {
   return (
-    <footer className="bg-adlib-primary dark:bg-black text-white">
-      <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+    <footer className="bg-[#050505] border-t border-white/6">
+      <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="space-y-4">
             <Link href="/" className="block">
-              <Logo className="w-48" />
+              <Logo className="w-40 opacity-90" />
             </Link>
-            <p className="font-work-sans text-sm text-gray-300">
-              Capturing moments, framing perspectives. A community of photographers dedicated to the art and science of
-              visual storytelling.
+            <p className="font-work-sans text-sm text-white/40 leading-relaxed">
+              Capturing moments, framing perspectives. A community of photographers dedicated to the art of visual storytelling.
             </p>
-            <div className="flex space-x-4">
-              <Link href="https://www.instagram.com/sit_adlib/" className="text-gray-300 hover:text-adlib-secondary">
-                <Instagram className="h-5 w-5" />
+            <div className="flex space-x-3">
+              <Link
+                href="https://www.instagram.com/sit_adlib/"
+                className="flex h-9 w-9 items-center justify-center rounded-full glass-button text-white/50 hover:text-amber-400 transition-colors"
+              >
+                <Instagram className="h-4 w-4" />
                 <span className="sr-only">Instagram</span>
               </Link>
-              
-              
             </div>
           </div>
 
           <div>
-            <h3 className="font-outfit text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="font-work-sans space-y-2">
-              <li>
-                <Link href="/" className="text-gray-300 hover:text-adlib-secondary">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/gallery" className="text-gray-300 hover:text-adlib-secondary">
-                  Gallery
-                </Link>
-              </li>
-              <li>
-                <Link href="/events" className="text-gray-300 hover:text-adlib-secondary">
-                  Events
-                </Link>
-              </li>
-              <li>
-                <Link href="/team" className="text-gray-300 hover:text-adlib-secondary">
-                  Team
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-gray-300 hover:text-adlib-secondary">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-gray-300 hover:text-adlib-secondary">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-outfit text-lg font-semibold mb-4">Resources</h3>
-            <ul className="font-work-sans space-y-2">
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-adlib-secondary">
-                  Photography Tips
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-adlib-secondary">
-                  Equipment Guide
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-adlib-secondary">
-                  Editing Tutorials
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-adlib-secondary">
-                  Membership Info
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-gray-300 hover:text-adlib-secondary">
-                  FAQ
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-outfit text-lg font-semibold mb-4">Contact Us</h3>
+            <h3 className="font-outfit text-sm font-semibold text-white/80 mb-5 uppercase tracking-wider">Quick Links</h3>
             <ul className="font-work-sans space-y-3">
-              <li className="flex items-start">
-                <MapPin className="h-5 w-5 text-adlib-secondary mr-2 mt-0.5" />
-                <span className="text-gray-300">
-                  Golden Jublie Block
-                  <br />
-                  Siddaganga Institute of Technology
-                  <br />
-                  Tumakuru , Karnataka, India
+              {["/", "/gallery", "/events", "/team", "/about", "/contact"].map((href, i) => {
+                const labels = ["Home", "Gallery", "Events", "Team", "About", "Contact"];
+                return (
+                  <li key={href}>
+                    <Link href={href} className="text-sm text-white/40 hover:text-amber-400 transition-colors">
+                      {labels[i]}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-outfit text-sm font-semibold text-white/80 mb-5 uppercase tracking-wider">Resources</h3>
+            <ul className="font-work-sans space-y-3">
+              {["Photography Tips", "Equipment Guide", "Editing Tutorials", "Membership Info", "FAQ"].map((label) => (
+                <li key={label}>
+                  <Link href="#" className="text-sm text-white/40 hover:text-amber-400 transition-colors">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-outfit text-sm font-semibold text-white/80 mb-5 uppercase tracking-wider">Contact</h3>
+            <ul className="font-work-sans space-y-3">
+              <li className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 text-amber-400/70 mt-0.5 shrink-0" />
+                <span className="text-sm text-white/40">
+                  Golden Jublie Block<br />
+                  Siddaganga Institute of Technology<br />
+                  Tumakuru, Karnataka, India
                 </span>
               </li>
-              <li className="flex items-center">
-                <Mail className="h-5 w-5 text-adlib-secondary mr-2" />
-                <a href="mailto:adlibarts01@gmail.com" className="text-gray-300 hover:text-adlib-secondary">
+              <li className="flex items-center gap-2">
+                <Mail className="h-4 w-4 text-amber-400/70 shrink-0" />
+                <a href="mailto:adlibarts01@gmail.com" className="text-sm text-white/40 hover:text-amber-400 transition-colors">
                   adlibarts01@gmail.com
                 </a>
               </li>
-              <li className="flex items-center">
-                <Phone className="h-5 w-5 text-adlib-secondary mr-2" />
-                <a href="tel:7981103350" className="text-gray-300 hover:text-adlib-secondary">
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 text-amber-400/70 shrink-0" />
+                <a href="tel:7981103350" className="text-sm text-white/40 hover:text-amber-400 transition-colors">
                   7981103350
                 </a>
               </li>
@@ -121,8 +81,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-gray-800 pt-8">
-          <p className="font-work-sans text-center text-sm text-gray-400">
+        <div className="mt-12 border-t border-white/6 pt-8">
+          <p className="font-work-sans text-center text-xs text-white/25">
             &copy; {new Date().getFullYear()} Adlib Photography Club. All rights reserved.
           </p>
         </div>

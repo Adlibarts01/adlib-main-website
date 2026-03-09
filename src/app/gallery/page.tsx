@@ -331,11 +331,13 @@ export default function GalleryPage() {
   return (
     <div className="flex flex-col">
       {/* Page Header */}
-      <section className="bg-[#0A1D37] dark:bg-black py-16 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-dark py-24 text-white relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{background: 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(212,160,66,0.12) 0%, transparent 70%)'}} />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="font-outfit text-4xl font-bold md:text-5xl">Our Photography Gallery</h1>
-            <p className="font-work-sans mt-4 text-lg text-gray-300">
+            <span className="inline-block mb-4 px-3 py-1 rounded-full text-xs font-medium tracking-widest uppercase bg-amber-500/15 text-amber-400 border border-amber-500/20">Gallery</span>
+            <h1 className="font-outfit text-4xl font-bold md:text-5xl"><span className="text-amber-gradient">Our Photography</span> Gallery</h1>
+            <p className="font-work-sans mt-4 text-lg text-white/55">
               Explore a collection of stunning photographs captured by our talented club members.
             </p>
           </div>
@@ -343,16 +345,16 @@ export default function GalleryPage() {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-16 md:py-24 bg-white dark:bg-black">
+      <section className="py-16 md:py-24 section-surface frosted-section">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs defaultValue="All" className="w-full" onValueChange={setActiveCategory}>
             <div className="mb-10 overflow-x-auto">
-              <TabsList className="inline-flex w-auto p-1 bg-gray-100 dark:bg-[#1A2E4A]">
+              <TabsList className="inline-flex w-auto p-1 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full">
                 {categories.map((category) => (
                   <TabsTrigger
                     key={category}
                     value={category}
-                    className="font-outfit px-4 py-2 data-[state=active]:bg-[#F7B32B] data-[state=active]:text-[#0A1D37] dark:data-[state=active]:bg-[#F7B32B] dark:data-[state=active]:text-[#0A1D37] dark:text-gray-300"
+                    className="font-outfit px-4 py-2 rounded-full text-white/50 data-[state=active]:bg-amber-500 data-[state=active]:text-black data-[state=active]:shadow-[0_2px_12px_rgba(212,160,66,0.35)] transition-all duration-200"
                   >
                     {category}
                   </TabsTrigger>
@@ -372,7 +374,7 @@ export default function GalleryPage() {
                     (item) => (
                       <motion.div
                         key={item.id}
-                        className="group relative overflow-hidden rounded-lg bg-white dark:bg-[#1A2E4A] shadow-md hover:shadow-lg transition-all duration-300"
+                        className="group relative overflow-hidden rounded-2xl glass-card !p-0 transition-all duration-300"
                         variants={_item}
                         whileHover={{ y: -5 }}
                       >
@@ -388,7 +390,7 @@ export default function GalleryPage() {
                             <Button
                               variant="outline"
                               size="sm"
-                              className="w-full border-white text-white hover:bg-white hover:text-[#0A1D37]"
+                              className="w-full border-amber-400/50 text-white hover:bg-amber-500 hover:text-black hover:border-amber-500 rounded-full transition-all duration-200"
                               onClick={() => openModal(item)}
                             >
                               View Details
@@ -398,18 +400,18 @@ export default function GalleryPage() {
                         <div className="p-4">
                           <div className="flex justify-between items-start">
                             <div>
-                              <h3 className="font-outfit text-lg font-semibold text-[#0A1D37] dark:text-white">
+                              <h3 className="font-outfit text-lg font-semibold text-white">
                                 {item.title}
                               </h3>
-                              <p className="font-work-sans text-sm text-gray-600 dark:text-gray-300">
+                              <p className="font-work-sans text-sm text-white/45">
                                 by {item.photographer}
                               </p>
                             </div>
-                            <span className="font-outfit text-xs font-medium px-2 py-1 rounded-full bg-[#E5E5E5] dark:bg-[#0A1D37] text-[#0A1D37] dark:text-white">
+                            <span className="font-outfit text-xs font-medium px-2 py-1 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/20">
                               {item.category}
                             </span>
                           </div>
-                          <p className="font-work-sans text-xs text-gray-500 dark:text-gray-400 mt-2 font-mono">
+                          <p className="font-work-sans text-xs text-white/30 mt-2 font-mono">
                             {item.metadata}
                           </p>
                         </div>

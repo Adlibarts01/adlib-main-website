@@ -68,64 +68,71 @@ export default function FeaturedGallery() {
     activeCategory === "All" ? galleryItems : galleryItems.filter((item) => item.category === activeCategory)
 
   return (
-    <section className="py-16 md:py-24 bg-[#E5E5E5] dark:bg-black">
+    <section className="py-20 md:py-28 section-surface frosted-section">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white md:text-4xl">Featured Photography</h2>
-          <p className="font-work-sans mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Explore our collection of stunning photographs captured by our talented club members.
+        <div className="mb-12 text-center space-y-3">
+          <div className="inline-flex items-center gap-2 glass-card px-4 py-1.5 rounded-full w-fit mx-auto" style={{borderRadius:"9999px"}}>
+            <span className="font-outfit text-xs font-medium text-amber-400/80 uppercase tracking-widest">Portfolio</span>
+          </div>
+          <h2 className="font-outfit text-3xl font-bold text-white md:text-4xl">Featured Photography</h2>
+          <p className="font-work-sans text-base text-white/50 max-w-xl mx-auto">
+            Stunning photographs captured by our talented club members.
           </p>
         </div>
 
-        {/* Category Filters */}
+        {/* Category Filters — glass pill buttons */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">
           {categories.map((category) => (
-            <Button
+            <button
               key={category}
-              variant="outline"
               className={cn(
-                "font-outfit",
+                "font-outfit text-sm font-medium px-5 py-2 rounded-full transition-all duration-250 border",
                 activeCategory === category
-                  ? "bg-[#F7B32B] text-[#0A1D37] border-[#F7B32B] dark:bg-[#F7B32B] dark:text-[#0A1D37]"
-                  : "bg-white dark:bg-[#1A2E4A] text-[#0A1D37] dark:text-white hover:bg-[#F7B32B]/10 dark:hover:bg-[#F7B32B]/20",
+                  ? "bg-amber-500 text-black border-amber-500 shadow-[0_4px_16px_rgba(212,160,66,0.35)]"
+                  : "glass-button text-white/70 hover:text-white"
               )}
               onClick={() => setActiveCategory(category)}
             >
               {category}
-            </Button>
+            </button>
           ))}
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filteredGallery.map((item) => (
-            <div key={item.id} className="group relative overflow-hidden rounded-lg bg-white dark:bg-[#1A2E4A] shadow-md">
-              <div className="aspect-4/3 relative overflow-hidden">
+            <div key={item.id} className="group relative overflow-hidden rounded-2xl glass-card !p-0">
+              <div className="aspect-4/3 relative overflow-hidden rounded-t-2xl">
                 <Image
                   src={item.image || "/placeholder.svg"}
                   alt={item.title}
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover transition-transform duration-500 group-hover:scale-108"
                 />
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="p-4">
-                <div className="flex justify-between items-start">
+                <div className="flex justify-between items-start gap-2">
                   <div>
-                    <h3 className="font-outfit text-lg font-semibold text-[#0A1D37] dark:text-white">{item.title}</h3>
-                    <p className="font-work-sans text-sm text-gray-600 dark:text-gray-300">by {item.photographer}</p>
+                    <h3 className="font-outfit text-base font-semibold text-white">{item.title}</h3>
+                    <p className="font-work-sans text-xs text-white/50 mt-0.5">by {item.photographer}</p>
                   </div>
-                  <span className="font-outfit text-xs font-medium px-2 py-1 rounded-full bg-[#E5E5E5] dark:bg-[#0A1D37] text-[#0A1D37] dark:text-white">
+                  <span className="font-outfit text-xs font-medium px-3 py-1 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/20 whitespace-nowrap shrink-0">
                     {item.category}
                   </span>
                 </div>
-                <p className="font-work-sans text-xs text-gray-500 dark:text-gray-400 mt-2 font-mono">{item.metadata}</p>
+                <p className="font-work-sans text-xs text-white/30 mt-2 font-mono">{item.metadata}</p>
               </div>
             </div>
           ))}
         </div>
 
         <div className="mt-12 text-center">
-          <Button asChild className="bg-[#0A1D37] hover:bg-[#0A1D37]/90 text-white">
+          <Button
+            asChild
+            className="bg-amber-500 text-black hover:bg-amber-400 font-outfit font-semibold rounded-full px-8 shadow-[0_4px_20px_rgba(212,160,66,0.3)]"
+          >
             <Link href="/gallery">
               View Full Gallery
               <ArrowRight className="ml-2 h-4 w-4" />

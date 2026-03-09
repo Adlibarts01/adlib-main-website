@@ -14,7 +14,7 @@ export default function Home() {
       <HeroSection />
 
       {/* About Section */}
-      <section className="py-16 md:py-24 bg-white dark:bg-black">
+      <section className="py-20 md:py-28 section-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 items-center">
             <motion.div
@@ -24,14 +24,14 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              
-              <div className="relative h-full w-full rounded-full overflow-hidden border-8 border-adlib-gray dark:border-gray-800 bg-white">
+              <div className="relative h-full w-full rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
                 <Image
                   src="/home/Logo club.png"
                   alt="Photographer in action"
                   fill
                   className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
             </motion.div>
 
@@ -42,76 +42,47 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-outfit text-3xl font-bold text-adlib-primary dark:text-white md:text-4xl">
-                About Adlib Photography Club
+              <div className="inline-flex items-center gap-2 glass-card px-4 py-1.5 rounded-full w-fit" style={{borderRadius:"9999px"}}>
+                <span className="font-outfit text-xs font-medium text-amber-400/80 uppercase tracking-widest">Our Story</span>
+              </div>
+              <h2 className="font-outfit text-3xl font-bold text-white md:text-4xl leading-tight">
+                About Adlib<br className="hidden md:block" />
+                <span className="text-amber-gradient"> Photography Club</span>
               </h2>
-              <p className="font-work-sans text-lg text-adlib-darkgray dark:text-gray-300">
+              <p className="font-work-sans text-base text-white/60 leading-relaxed">
                 Founded in 2018, Adlib Photography Club brings together passionate photographers of all skill levels to
                 learn, create, and grow together.
               </p>
-              <p className="font-work-sans text-adlib-darkgray dark:text-gray-400">
+              <p className="font-work-sans text-sm text-white/45 leading-relaxed">
                 Our name &quot;Adlib&quot; represents the balance between technical precision and creative spontaneity that
                 defines great photography. We provide a supportive community where members can develop their skills,
                 share their work, and explore new techniques.
               </p>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div className="flex items-start">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-adlib-secondary/10">
-                    <Camera className="h-5 w-5 text-adlib-secondary" />
+
+              {/* Feature grid */}
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 pt-2">
+                {[
+                  { icon: Camera, label: "Weekly Workshops", desc: "Hands-on learning for all skill levels" },
+                  { icon: Users, label: "Community Support", desc: "Connect with like-minded photographers" },
+                  { icon: Calendar, label: "Regular Events", desc: "Photo walks, exhibitions, and competitions" },
+                  { icon: ImageIcon, label: "Equipment Access", desc: "Borrow professional gear for projects" },
+                ].map(({ icon: Icon, label, desc }) => (
+                  <div key={label} className="glass-card p-4 flex items-start gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-500/15">
+                      <Icon className="h-4 w-4 text-amber-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-outfit text-sm font-semibold text-white">{label}</h3>
+                      <p className="font-work-sans text-xs text-white/50 mt-0.5">{desc}</p>
+                    </div>
                   </div>
-                  <div className="ml-4">
-                    <h3 className="font-outfit text-lg font-semibold text-adlib-primary dark:text-white">
-                      Weekly Workshops
-                    </h3>
-                    <p className="font-work-sans text-sm text-adlib-darkgray dark:text-gray-400">
-                      Hands-on learning experiences for all skill levels
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-adlib-secondary/10">
-                    <Users className="h-5 w-5 text-adlib-secondary" />
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="font-outfit text-lg font-semibold text-adlib-primary dark:text-white">
-                      Community Support
-                    </h3>
-                    <p className="font-work-sans text-sm text-adlib-darkgray dark:text-gray-400">
-                      Connect with like-minded photographers
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-adlib-secondary/10">
-                    <Calendar className="h-5 w-5 text-adlib-secondary" />
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="font-outfit text-lg font-semibold text-adlib-primary dark:text-white">
-                      Regular Events
-                    </h3>
-                    <p className="font-work-sans text-sm text-adlib-darkgray dark:text-gray-400">
-                      Photo walks, exhibitions, and competitions
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-adlib-secondary/10">
-                    <ImageIcon className="h-5 w-5 text-adlib-secondary" />
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="font-outfit text-lg font-semibold text-adlib-primary dark:text-white">
-                      Equipment Access
-                    </h3>
-                    <p className="font-work-sans text-sm text-adlib-darkgray dark:text-gray-400">
-                      Borrow professional gear for your projects
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
-              <div className="pt-4">
+
+              <div className="pt-2">
                 <Button
                   asChild
-                  className="bg-adlib-primary hover:bg-adlib-primary/90 dark:bg-adlib-secondary dark:text-white dark:hover:bg-adlib-tertiary"
+                  className="bg-amber-500 text-black hover:bg-amber-400 font-outfit font-semibold rounded-full px-7 shadow-[0_4px_20px_rgba(212,160,66,0.3)]"
                 >
                   <Link href="/about">
                     Learn More About Us

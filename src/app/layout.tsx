@@ -36,10 +36,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${outfit.variable} ${workSans.variable} font-sans`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
           <div className="flex min-h-screen flex-col">
             <Header />
-            <main className="flex-1 pt-24">{children}</main>
+            <main className="flex-1">{children}</main>
             <Toaster />
             <Footer />
           </div>

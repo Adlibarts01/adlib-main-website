@@ -13,7 +13,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import ThemeToggle from "@/components/theme-toggle";
+
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -40,17 +40,17 @@ export default function Header() {
     <header className="fixed top-0 inset-x-0 z-50 flex justify-center px-4 pt-4 pointer-events-none">
       <div
         className={cn(
-          "flex items-center justify-between w-full max-w-4xl rounded-full px-6 py-3 transition-all duration-300 pointer-events-auto",
+          "flex items-center justify-between w-full max-w-4xl rounded-full px-6 py-3 transition-all duration-500 pointer-events-auto",
           isScrolled
-            ? "bg-white/90 dark:bg-black/90 backdrop-blur-md shadow-lg"
-            : "bg-white/70 dark:bg-black/70 backdrop-blur-sm shadow-md",
+            ? "bg-black/80 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.6),0_0_1px_rgba(212,160,66,0.15)]"
+            : "bg-white/5 backdrop-blur-xl border border-white/8 shadow-[0_4px_24px_rgba(0,0,0,0.4)]",
         )}
       >
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-12 h-12">
+              <div className="flex items-center justify-center w-9 h-9">
                 <Image
-                  src="/home/Logo club.png"
+                  src="/home/dark_logo.png"
                   alt="ADLIB Logo"
                   width={40}
                   height={40}
@@ -61,31 +61,37 @@ export default function Header() {
           </div>
 
           {/* Desktop navigation */}
-          <nav className="hidden md:flex md:space-x-8">
+          <nav className="hidden md:flex md:items-center md:space-x-7">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "font-outfit text-sm font-medium transition-colors",
+                  "font-outfit text-sm font-medium transition-all duration-200 relative",
                   pathname === item.href
-                    ? "text-adlib-secondary"
-                    : "text-adlib-primary dark:text-white hover:text-adlib-secondary dark:hover:text-adlib-secondary"
+                    ? "text-amber-400"
+                    : "text-white/70 hover:text-white"
                 )}
               >
                 {item.name}
+                {pathname === item.href && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-amber-400/70 rounded-full" />
+                )}
               </Link>
             ))}
           </nav>
+
+          {/* Desktop right spacer — keeps nav centered */}
+          <div className="hidden md:flex items-center w-9" />
 
           {/* Mobile navigation */}
           <div className="flex items-center space-x-4 md:hidden">
             <Sheet>
               <SheetTrigger asChild>
                 <Button
-                  variant="outline"
+                  variant="ghost"
                   size="icon"
-                  className="md:hidden"
+                  className="md:hidden rounded-full bg-white/8 border border-white/12 hover:bg-white/15 text-white"
                   aria-label="Open menu"
                 >
                   <Menu className="h-5 w-5" />
@@ -93,17 +99,17 @@ export default function Header() {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-[300px] p-0 border-l border-gray-200 dark:border-gray-800"
+                className="w-[300px] p-0 border-l border-white/10 bg-black/95 backdrop-blur-2xl"
               >
                 <div className="flex flex-col h-full">
                   <div className="sr-only">
                     <SheetTitle>Navigation Menu</SheetTitle>
                   </div>
-                  <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
+                  <div className="flex items-center justify-between p-4 border-b border-white/10">
                     <Link href="/" className="flex items-center">
-                      <div className="bg-white rounded-full p-1.5 flex items-center justify-center w-12 h-12">
+                      <div className="flex items-center justify-center w-9 h-9">
                         <Image
-                          src="/home/Logo club.png"
+                          src="/home/dark_logo.png"
                           alt="ADLIB Logo"
                           width={32}
                           height={32}
@@ -128,8 +134,8 @@ export default function Header() {
                           className={cn(
                             "flex items-center px-4 py-3 rounded-md font-outfit text-base font-medium transition-colors",
                             pathname === item.href
-                              ? "bg-adlib-secondary/10 text-adlib-secondary"
-                              : "text-adlib-primary dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-adlib-secondary dark:hover:text-adlib-secondary"
+                              ? "bg-amber-500/15 text-amber-400 border border-amber-500/20"
+                              : "text-white/70 hover:bg-white/8 hover:text-white"
                           )}
                         >
                           {item.name}
@@ -138,9 +144,9 @@ export default function Header() {
                     </div>
                   </nav>
 
-                  <div className="p-4 border-t border-gray-200 dark:border-gray-800">
+                  <div className="p-4 border-t border-white/10">
                     <div className="flex justify-center">
-                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                      <span className="text-sm text-white/40">
                         © ADLIB {new Date().getFullYear()}
                       </span>
                     </div>

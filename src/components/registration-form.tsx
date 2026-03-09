@@ -117,7 +117,7 @@ export default function RegistrationForm({ isOpen, onClose, eventTitle, eventId 
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-xs p-4">
       <AnimatePresence>
         <motion.div
-          className="relative w-full max-w-md bg-white dark:bg-[#0A1D37] rounded-lg shadow-xl overflow-hidden"
+          className="relative w-full max-w-md glass-strong rounded-2xl overflow-hidden border border-white/10"
           variants={formVariants}
           initial="hidden"
           animate="visible"
@@ -126,28 +126,28 @@ export default function RegistrationForm({ isOpen, onClose, eventTitle, eventId 
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-1 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            className="absolute top-4 right-4 p-1 rounded-full bg-white/10 text-white/50 hover:bg-white/20 hover:text-white transition-colors"
           >
             <X size={18} />
           </button>
 
           <div className="p-6">
-            <h2 className="font-outfit text-2xl font-bold text-[#0A1D37] dark:text-white mb-1">
+            <h2 className="font-outfit text-2xl font-bold text-white mb-1">
               {isSubmitted ? "Registration Complete!" : "Event Registration"}
             </h2>
-            {eventTitle && !isSubmitted && <p className="font-outfit text-[#F7B32B] mb-4">{eventTitle}</p>}
+            {eventTitle && !isSubmitted && <p className="font-outfit text-amber-400 mb-4">{eventTitle}</p>}
 
             {submitError && !isSubmitted && (
-              <div className="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 p-3 rounded-md mb-4 text-sm">
+              <div className="bg-red-500/10 border border-red-500/20 text-red-300 p-3 rounded-xl mb-4 text-sm">
                 {submitError}
               </div>
             )}
 
             {isSubmitted ? (
               <div className="text-center py-8">
-                <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 rounded-full bg-amber-500/15 flex items-center justify-center mx-auto mb-4">
                   <svg
-                    className="w-8 h-8 text-green-500"
+                    className="w-8 h-8 text-amber-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -156,18 +156,18 @@ export default function RegistrationForm({ isOpen, onClose, eventTitle, eventId 
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="font-outfit text-xl font-bold text-[#0A1D37] dark:text-white mb-2">
+                <h3 className="font-outfit text-xl font-bold text-white mb-2">
                   Registration Complete!
                 </h3>
-                <div className="bg-white dark:bg-[#142B4D] p-4 rounded-lg border border-gray-200 dark:border-gray-700 mb-4 text-left">
-                  <p className="font-work-sans text-gray-700 dark:text-gray-300 mb-4">
-                    Thank you for registering for <span className="font-semibold">{eventTitle}</span>!
+                <div className="glass-card p-4 !rounded-xl mb-4 text-left">
+                  <p className="font-work-sans text-white/70 mb-4">
+                    Thank you for registering for <span className="font-semibold text-white">{eventTitle}</span>!
                   </p>
-                  <p className="font-work-sans text-gray-700 dark:text-gray-300 mb-4">
-                    We&apos;ve sent a confirmation email to <span className="font-semibold">{formData.email}</span> with all the details.
+                  <p className="font-work-sans text-white/70 mb-4">
+                    We&apos;ve sent a confirmation email to <span className="font-semibold text-white">{formData.email}</span> with all the details.
                   </p>
-                  <div className="bg-[#E8F7EE] dark:bg-[#1A3A2A] p-3 rounded-md mb-2">
-                    <p className="font-work-sans text-gray-800 dark:text-gray-200 font-medium">
+                  <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 mb-2">
+                    <p className="font-work-sans text-white/70 font-medium">
                       Join our WhatsApp group for event updates and communication:
                     </p>
                     <div className="flex justify-center mt-3">
@@ -187,7 +187,7 @@ export default function RegistrationForm({ isOpen, onClose, eventTitle, eventId 
                 </div>
                 <Button
                   onClick={onClose}
-                  className="bg-[#0A1D37] dark:bg-[#F7B32B] dark:text-[#0A1D37] hover:bg-[#0A1D37]/90 dark:hover:bg-[#F7B32B]/90"
+                  className="bg-amber-500 text-black hover:bg-amber-400 rounded-full font-semibold"
                 >
                   Close
                 </Button>
@@ -298,7 +298,7 @@ export default function RegistrationForm({ isOpen, onClose, eventTitle, eventId 
                   <Button
                     type="submit"
                     disabled={isSubmitting || !formData.agreeToTerms}
-                    className="bg-[#0A1D37] dark:bg-[#F7B32B] dark:text-[#0A1D37] hover:bg-[#0A1D37]/90 dark:hover:bg-[#F7B32B]/90 font-work-sans"
+                    className="bg-amber-500 text-black hover:bg-amber-400 rounded-full font-semibold font-work-sans"
                   >
                     {isSubmitting ? "Processing..." : "Register"}
                   </Button>
