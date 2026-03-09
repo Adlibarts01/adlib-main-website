@@ -6,6 +6,7 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
+import { Analytics } from "@vercel/analytics/next"
 
 // Configure the Outfit font
 const outfit = Outfit({
@@ -42,6 +43,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <Toaster />
             <Footer />
+            <Analytics />
           </div>
         </ThemeProvider>
       </body>
