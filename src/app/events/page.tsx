@@ -2,9 +2,10 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Calendar, Clock, MapPin, Users, Bell } from "lucide-react"
-import { motion } from "framer-motion"
+import { Clock, MapPin, Bell, ChevronDown, ChevronUp, X } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 import RegistrationForm from "@/components/registration-form"
 import {
   Dialog,
@@ -13,7 +14,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog"
-import { announcements, upcomingEvents } from "@/lib/data/events"
+import { announcements, eventsWithPhotos, upcomingEvents } from "@/lib/data/events"
 
 // Define interfaces outside the component
 interface Event {
@@ -35,19 +36,80 @@ interface Announcement {
   isNew: boolean;
 }
 
+
 const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
     },
   },
 }
 
 const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  show: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: { 
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1]
+    } 
+  },
+}
+
+const photoContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.2,
+    },
+  },
+}
+
+const photoItem = {
+  hidden: { opacity: 0, scale: 0.8, y: 20 },
+  show: { 
+    opacity: 1, 
+    scale: 1,
+    y: 0,
+    transition: { 
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1]
+    } 
+  },
+}
+
+const expandContent = {
+  hidden: { 
+    opacity: 0, 
+    scale: 0.95,
+    y: -10,
+  },
+  show: { 
+    opacity: 1, 
+    scale: 1,
+    y: 0,
+    transition: { 
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1],
+      staggerChildren: 0.05,
+    } 
+  },
+  exit: { 
+    opacity: 0, 
+    scale: 0.95,
+    y: -10,
+    transition: { 
+      duration: 0.3,
+      ease: [0.22, 1, 0.36, 1]
+    } 
+  },
 }
 
 export default function EventsPage() {
@@ -55,11 +117,9 @@ export default function EventsPage() {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
   const [selectedAnnouncement, setSelectedAnnouncement] = useState<Announcement | null>(null)
   const [isAnnouncementModalOpen, setIsAnnouncementModalOpen] = useState(false)
-
-  const openRegistration = (event: Event) => {
-    setSelectedEvent(event)
-    setIsRegistrationOpen(true)
-  }
+  const [expandedEventId, setExpandedEventId] = useState<string | null>(null)
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null)
+  const [selectedEventPhotos, setSelectedEventPhotos] = useState<string[]>([])
 
   const closeRegistration = () => {
     setIsRegistrationOpen(false)
@@ -74,10 +134,36 @@ export default function EventsPage() {
     setIsAnnouncementModalOpen(false)
   }
 
+  const toggleEventExpansion = (eventId: string) => {
+    setExpandedEventId(expandedEventId === eventId ? null : eventId)
+  }
+
+  const openPhotoModal = (photos: string[], index: number) => {
+    setSelectedEventPhotos(photos)
+    setSelectedPhotoIndex(index)
+  }
+
+  const closePhotoModal = () => {
+    setSelectedPhotoIndex(null)
+    setSelectedEventPhotos([])
+  }
+
+  const goToNextPhoto = () => {
+    if (selectedPhotoIndex !== null && selectedEventPhotos.length > 0) {
+      setSelectedPhotoIndex((selectedPhotoIndex + 1) % selectedEventPhotos.length)
+    }
+  }
+
+  const goToPreviousPhoto = () => {
+    if (selectedPhotoIndex !== null && selectedEventPhotos.length > 0) {
+      setSelectedPhotoIndex((selectedPhotoIndex - 1 + selectedEventPhotos.length) % selectedEventPhotos.length)
+    }
+  }
+
   return (
     <div className="flex flex-col">
       {/* Page Header */}
-      <section className="bg-[#0A1D37] py-16 text-white">
+      <section className="bg-[#0A1D37] dark:bg-black py-16 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="font-outfit text-4xl font-bold md:text-5xl">Events & Workshops</h1>
@@ -127,71 +213,267 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* Events Timeline */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white">Upcoming Events</h2>
-            <p className="font-work-sans mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Register early as our events often reach capacity quickly. Club members receive priority registration.
-            </p>
-          </div>
-
-          <div className="mx-auto max-w-4xl">
-            <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-0.5 before:bg-linear-to-b before:from-transparent before:via-[#F7B32B] before:to-transparent md:before:mx-auto md:before:translate-x-0">
-              {upcomingEvents.map((event, index) => (
+      {/* Upcoming Events Section */}
+      {upcomingEvents.length > 0 && (
+        <section className="py-16 md:py-24 bg-white dark:bg-black">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div 
+              className="mb-12 text-center"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white">Upcoming Events</h2>
+              <p className="font-work-sans mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Register early as our events often reach capacity quickly. Club members receive priority registration.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+              variants={container}
+              initial="hidden"
+              animate="show"
+            >
+              {upcomingEvents.map((event) => (
                 <motion.div
                   key={event.id}
-                  className="relative flex items-start md:justify-center"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  variants={item}
+                  className="group relative bg-white dark:bg-[#1A2E4A] rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden border-2 border-gray-200/50 dark:border-gray-700/50 transition-all duration-300"
+                  whileHover={{ y: -4 }}
                 >
-                  <motion.div
-                    className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-[#F7B32B] text-white md:relative md:left-auto md:top-auto"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Calendar className="h-5 w-5" />
-                  </motion.div>
-
-                  <motion.div
-                    className="ml-12 rounded-lg bg-white dark:bg-[#1A2E4A] p-6 shadow-md md:ml-0 md:mr-0 md:max-w-md md:even:ml-12 md:odd:mr-12 hover:shadow-lg transition-shadow duration-300"
-                    whileHover={{ y: -5 }}
-                  >
-                    <div className="mb-2 font-outfit text-sm font-semibold text-[#F7B32B]">{event.date}</div>
-                    <h3 className="font-outfit text-xl font-bold text-[#0A1D37] dark:text-white">{event.title}</h3>
-                    <p className="font-work-sans mt-2 text-gray-600 dark:text-gray-300">{event.description}</p>
-                    <div className="mt-4 space-y-2">
-                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                        <Clock className="mr-2 h-4 w-4 text-[#F7B32B]" />
-                        <span>{event.time}</span>
-                      </div>
-                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                        <MapPin className="mr-2 h-4 w-4 text-[#F7B32B]" />
-                        <span>{event.location}</span>
-                      </div>
-                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                        <Users className="mr-2 h-4 w-4 text-[#F7B32B]" />
-                        <span>{event.capacity}</span>
-                      </div>
-                    </div>
-                    <div className="mt-4 flex justify-between items-center">
-                      <span className="font-outfit text-xs font-medium px-2 py-1 rounded-full bg-[#E5E5E5] dark:bg-[#0A1D37] text-[#0A1D37] dark:text-white">
-                        {event.difficulty}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#F7B32B]/0 to-[#F7B32B]/0 group-hover:from-[#F7B32B]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
+                  
+                  <div className="p-6 md:p-8 relative z-10">
+                    <div className="flex items-start justify-between gap-3 mb-4">
+                      <h3 className="font-outfit text-2xl font-bold text-[#0A1D37] dark:text-white flex-1">
+                        {event.title}
+                      </h3>
+                      <span className="font-outfit text-xs text-[#F7B32B] bg-gradient-to-r from-[#F7B32B]/20 to-[#F7B32B]/10 px-3 py-1 rounded-full border border-[#F7B32B]/30 whitespace-nowrap">
+                        {event.date}
                       </span>
-                      <Button
-                        className="bg-[#0A1D37] dark:bg-[#F7B32B] dark:text-[#0A1D37] hover:bg-[#0A1D37]/90 dark:hover:bg-[#F7B32B]/90"
-                        onClick={() => openRegistration(event)}
-                      >
-                        Register
-                      </Button>
                     </div>
-                  </motion.div>
+                    
+                    <div className="space-y-3 mb-4">
+                      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                        <Clock className="h-4 w-4 text-[#F7B32B]" />
+                        <span className="font-work-sans">{event.time}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                        <MapPin className="h-4 w-4 text-[#F7B32B]" />
+                        <span className="font-work-sans">{event.location}</span>
+                      </div>
+                      {event.capacity && (
+                        <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
+                          <span className="font-work-sans">Capacity: {event.capacity}</span>
+                        </div>
+                      )}
+                      {event.difficulty && (
+                        <div className="flex items-center gap-2 text-sm">
+                          <span className="font-work-sans px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                            {event.difficulty}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    
+                    <p className="font-work-sans text-gray-600 dark:text-gray-300 mb-6 leading-relaxed line-clamp-3">
+                      {event.description}
+                    </p>
+                    
+                    <Button
+                      onClick={() => {
+                        setSelectedEvent(event)
+                        setIsRegistrationOpen(true)
+                      }}
+                      className="w-full bg-gradient-to-r from-[#F7B32B] to-[#F7B32B]/80 text-[#0A1D37] hover:from-[#F7B32B]/90 hover:to-[#F7B32B]/70 shadow-lg"
+                    >
+                      Register Now
+                    </Button>
+                  </div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
+        </section>
+      )}
+
+      {/* Events Gallery Section */}
+      <section className="py-16 bg-gradient-to-b from-white via-gray-50/50 to-white dark:from-[#1A2E4A] dark:via-[#0A1D37]/50 dark:to-[#1A2E4A]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="mb-12"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="text-center mb-8">
+              <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white md:text-4xl">Our Events</h2>
+              <p className="font-work-sans mt-2 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Explore our past events, workshops, and activities. Each event includes detailed descriptions and photo galleries.
+              </p>
+              <p className="font-work-sans mt-3 text-sm text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+                💡 To add or edit events, modify the events data in <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">src/lib/data/events.ts</code>
+              </p>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            className="space-y-6"
+            variants={container}
+            initial="hidden"
+            animate="show"
+          >
+            {eventsWithPhotos.map((event) => (
+              <motion.div
+                key={event.id}
+                variants={item}
+                className="group relative bg-white dark:bg-[#223A5F] rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden border-2 border-gray-200/50 dark:border-gray-700/50 transition-all duration-300"
+                whileHover={{ y: -4 }}
+              >
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#F7B32B]/0 to-[#F7B32B]/0 group-hover:from-[#F7B32B]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
+                
+                {/* Event Header */}
+                <motion.div 
+                  className="p-6 md:p-8 cursor-pointer relative z-10"
+                  onClick={() => toggleEventExpansion(event.id)}
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-3 mb-4">
+                        <motion.h3 
+                          className="font-outfit text-2xl md:text-3xl font-bold text-[#0A1D37] dark:text-white"
+                          whileHover={{ scale: 1.02 }}
+                        >
+                          {event.title}
+                        </motion.h3>
+                        <motion.span 
+                          className="font-outfit text-sm text-[#F7B32B] bg-gradient-to-r from-[#F7B32B]/20 to-[#F7B32B]/10 px-4 py-1.5 rounded-full border border-[#F7B32B]/30"
+                          whileHover={{ scale: 1.05 }}
+                        >
+                          {event.date}
+                        </motion.span>
+                      </div>
+                      {(event.location || event.time) && (
+                        <motion.div 
+                          className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-300 mb-3"
+                          initial={{ opacity: 0.8 }}
+                          whileHover={{ opacity: 1 }}
+                        >
+                          {event.location && (
+                            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-100/50 dark:bg-gray-800/50">
+                              <MapPin className="h-4 w-4 text-[#F7B32B]" />
+                              <span className="font-work-sans">{event.location}</span>
+                            </div>
+                          )}
+                          {event.time && (
+                            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-100/50 dark:bg-gray-800/50">
+                              <Clock className="h-4 w-4 text-[#F7B32B]" />
+                              <span className="font-work-sans">{event.time}</span>
+                            </div>
+                          )}
+                        </motion.div>
+                      )}
+                      {expandedEventId !== event.id && (
+                        <p className="font-work-sans text-gray-600 dark:text-gray-300 mt-3 line-clamp-2 leading-relaxed">
+                          {event.description}
+                        </p>
+                      )}
+                    </div>
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: expandedEventId === event.id ? 180 : 0 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="ml-4 rounded-full bg-gray-100/50 dark:bg-gray-800/50 hover:bg-[#F7B32B]/20 dark:hover:bg-[#F7B32B]/20"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          toggleEventExpansion(event.id)
+                        }}
+                      >
+                        {expandedEventId === event.id ? (
+                          <ChevronUp className="h-5 w-5 text-[#F7B32B]" />
+                        ) : (
+                          <ChevronDown className="h-5 w-5 text-[#F7B32B]" />
+                        )}
+                      </Button>
+                    </motion.div>
+                  </div>
+                </motion.div>
+
+                {/* Expanded Content */}
+                <AnimatePresence mode="wait">
+                  {expandedEventId === event.id && (
+                    <motion.div
+                      variants={expandContent}
+                      initial="hidden"
+                      animate="show"
+                      exit="exit"
+                      className="overflow-hidden border-t border-gray-200/50 dark:border-gray-700/50"
+                    >
+                      <div className="px-6 md:px-8 pb-6 md:pb-8 pt-4 bg-gradient-to-b from-transparent to-gray-50/50 dark:to-gray-900/20">
+                        <motion.p 
+                          className="font-work-sans text-gray-700 dark:text-gray-300 mb-8 leading-relaxed text-base"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.1 }}
+                        >
+                          {event.description}
+                        </motion.p>
+                        
+                        {/* Photo Gallery */}
+                        <motion.div 
+                          className="mb-4"
+                          variants={photoContainer}
+                          initial="hidden"
+                          animate="show"
+                        >
+                          <motion.h4 
+                            className="font-outfit text-xl font-semibold text-[#0A1D37] dark:text-white mb-6 flex items-center gap-2"
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.15 }}
+                          >
+                            <span className="h-1 w-8 bg-gradient-to-r from-[#F7B32B] to-transparent rounded-full" />
+                            Event Photos ({event.photos.length})
+                          </motion.h4>
+                          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            {event.photos.map((photo, index) => (
+                              <motion.div
+                                key={index}
+                                variants={photoItem}
+                                className="relative aspect-square overflow-hidden rounded-xl cursor-pointer group shadow-md hover:shadow-xl transition-shadow duration-300"
+                                whileHover={{ scale: 1.05, zIndex: 10 }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => openPhotoModal(event.photos, index)}
+                              >
+                                <Image
+                                  src={photo}
+                                  alt={`${event.title} - Photo ${index + 1}`}
+                                  fill
+                                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <div className="absolute bottom-0 left-0 right-0 p-2 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                                  <span className="text-white text-xs font-outfit font-medium">View Full Size</span>
+                                </div>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -249,6 +531,126 @@ export default function EventsPage() {
           </DialogContent>
         )}
       </Dialog>
+
+      {/* Photo Modal */}
+      <AnimatePresence mode="wait">
+        {selectedPhotoIndex !== null && selectedEventPhotos.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-4"
+            onClick={closePhotoModal}
+          >
+            <motion.div 
+              className="relative w-full max-w-6xl h-full flex items-center justify-center"
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {/* Close Button */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
+                className="absolute top-4 right-4 z-10"
+              >
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-white hover:bg-white/20 rounded-full backdrop-blur-sm"
+                  onClick={closePhotoModal}
+                >
+                  <X className="h-6 w-6" />
+                </Button>
+              </motion.div>
+
+              {/* Previous Button */}
+              {selectedEventPhotos.length > 1 && (
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                  whileHover={{ scale: 1.1, x: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="absolute left-4 z-10"
+                >
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-white hover:bg-white/20 rounded-full backdrop-blur-sm"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      goToPreviousPhoto()
+                    }}
+                  >
+                    <ChevronDown className="h-8 w-8 rotate-90" />
+                  </Button>
+                </motion.div>
+              )}
+
+              {/* Next Button */}
+              {selectedEventPhotos.length > 1 && (
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                  whileHover={{ scale: 1.1, x: 5 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="absolute right-4 z-10"
+                >
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-white hover:bg-white/20 rounded-full backdrop-blur-sm"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      goToNextPhoto()
+                    }}
+                  >
+                    <ChevronDown className="h-8 w-8 -rotate-90" />
+                  </Button>
+                </motion.div>
+              )}
+
+              {/* Image */}
+              <motion.div
+                className="relative w-full h-full max-h-[90vh] flex items-center justify-center"
+                onClick={(e) => e.stopPropagation()}
+                key={selectedPhotoIndex}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <Image
+                  src={selectedEventPhotos[selectedPhotoIndex]}
+                  alt={`Photo ${selectedPhotoIndex + 1}`}
+                  fill
+                  className="object-contain"
+                  sizes="90vw"
+                />
+              </motion.div>
+
+              {/* Photo Counter */}
+              {selectedEventPhotos.length > 1 && (
+                <motion.div 
+                  className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 backdrop-blur-md text-white px-6 py-2 rounded-full font-outfit text-sm border border-white/10"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  {selectedPhotoIndex + 1} / {selectedEventPhotos.length}
+                </motion.div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

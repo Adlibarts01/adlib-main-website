@@ -7,8 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import GalleryModal from "@/components/gallery-modal"
 import { motion } from "framer-motion"
 
-const categories = ["All", "Landscape", "Portrait", "Street", "Abstract", "Macro", "Wildlife", "Artitecture","Insects"]
-
+const categories = ["All", "Landscape", "Portrait", "Street", "Abstract", "Macro", "Wildlife", "Architecture", "Insects", "Astrophotography"]
 const galleryItems = [
   {
     id: 1,
@@ -23,7 +22,7 @@ const galleryItems = [
     id: 2,
     title: "Clock Tower",
     photographer: "Rounak Gupta",
-    category: "Artitecture",
+    category: "Architecture",
     image: "/gallery/artitecture/IMG-20241005-WA0021.jpg",
     metadata: "f/2.8, 1/200s, ISO 400",
     description: "A close-up of a clock tower with intricate details and textures, showcasing architectural beauty.",
@@ -40,7 +39,7 @@ const galleryItems = [
   {
     id: 4,
     title: "Light Patterns",
-    photographer: "Taylor Reed",
+    photographer: "Harshit Kumar",
     category: "Abstract",
     image: "/gallery/Abstract/IMG-20241005-WA0019.jpg",
     metadata: "f/11, 1/15s, ISO 200",
@@ -58,7 +57,7 @@ const galleryItems = [
   {
     id: 6,
     title: "Street Vendor",
-    photographer: "Casey Kim",
+    photographer: "Sujal R T",
     category: "Street",
     image: "/gallery/street vendor/IMG_20250206_083525_977.jpg",
     metadata: "f/4, 1/250s, ISO 400",
@@ -67,7 +66,7 @@ const galleryItems = [
   {
     id: 7,
     title: "Flower Close-up",
-    photographer: "Riley Johnson",
+    photographer: "SUJAL R T",
     category: "Macro",
     image: "/gallery/macro/IMG-20241005-WA0015.jpg",
     metadata: "f/2.8, 1/60s, ISO 200",
@@ -94,7 +93,7 @@ const galleryItems = [
   {
     id: 10,
     title: "Shri Murudeshwara Temple",
-    photographer: "Shubham Kumar",
+    photographer: "Chaitanay Krishna",
     category: "Artitecture",
     image: "/gallery/artitecture/IMG-20241005-WA0035.jpg",
     metadata: "f/8, 1/250s, ISO 400",
@@ -130,7 +129,7 @@ const galleryItems = [
   {
     id: 14,
     title: "Bee",
-    photographer: "Sam Wilson",
+    photographer: "Vrashabh Devatkal",
     category: "Insects",
     image: "/gallery/insects/IMG-20241005-WA0041.jpg",
     metadata: "f/5.6, 1/200s, ISO 100",
@@ -139,7 +138,7 @@ const galleryItems = [
   {
     id: 15,
     title: "Netravati Peak",
-    photographer: "Alex Morgan",
+    photographer: "Shubham Kumar Gupta",
     category: "Landscape",
     image: "/gallery/scenery/IMG-20241005-WA0036.jpg",
     metadata: "f/11, 1/60s, ISO 200",
@@ -157,7 +156,7 @@ const galleryItems = [
   {
     id: 17,
     title: "Candid Moment",
-    photographer: "",
+    photographer: "Shreyas A Jain",
     category: "Macro",
     image: "/gallery/macro/1000070091.jpg",
     metadata: "f/4, 1/125s, ISO 400",
@@ -175,12 +174,103 @@ const galleryItems = [
   {
     id: 19,
     title: "Abstract Car",
-    photographer: "Jordan Lee",
+    photographer: "Shubham Kumar Gupta",
     category: "Abstract",
     image: "/gallery/IMG-20241005-WA0033.jpg",
     metadata: "f/2.8, 1/30s, ISO 400",
     description: "Long exposure shot capturing light trails from moving vehicles on a busy street.",
-  }
+  },
+  {
+    id: 20,
+    title: "F 35",
+    photographer: "Shreyas A Jain",
+    category: "Abstract",
+    image: "/gallery/1000103590.jpg",
+    metadata: "f/4, 1/200s, ISO 800",
+    description: "A f35 fighter jet soaring through the sky, showcasing its sleek design and powerful engines."
+  },
+  {
+    id: 21,
+    title: "full moon",
+    photographer: "Harshit Kumar",
+    category: "Astrophotography",
+    image: "/gallery/IMG-20241005-WA0028.jpg",
+    metadata: "f/11, 1/125s, ISO 100",
+    description: "A stunning full moon illuminating the night sky with its bright, silvery glow.",
+  },
+  {
+    id: 22,
+    title: "Spider",
+    photographer: "Rakshit M S",
+    category: "Insects",
+    image: "/gallery/spider raksh.jpg",
+    metadata: "f/5.6, 1/200s, ISO 100",
+    description: "Close-up of a spider's eye, showcasing intricate details and textures in macro photography.",
+  },
+  {
+    id: 23,
+    title: "Boy and Dog",
+    photographer: "Sujal R T",
+    category: "Portrait",
+    image: "/gallery/sujal.jpg",
+    metadata: "f/4, 1/125s, ISO 200",
+    description: "A moment of a boy and a dog, showcasing their bond and friendship.",
+  },
+  {
+    id: 24,
+    title: "Hibiscus",
+    photographer: "Sanmathi Jain B J",
+    category: "Macro",
+    image: "/gallery/20250925_072215(3).jpg",
+    metadata: "f/8, 1/60s, ISO 100",
+    description: "A close-up of a hibiscus flower, showcasing its intricate details and textures in macro photography.",
+  },
+  {
+    id: 25,
+    title: "Cat",
+    photographer: "Vrashabh Devatkal",
+    category: "Wildlife",
+    image: "/gallery/animals/1000070093.jpg",
+    metadata: "f/8, 1/60s, ISO 100",
+    description: "A close-up of a cat's eye, showcasing its intricate details and textures in macro photography.",
+  },
+  {
+    id: 26,
+    title: "squirrel",
+    photographer: "Babul kumar",
+    category: "Wildlife",
+    image: "/gallery/1000131092.jpg",
+    metadata: "f/8, 1/60s, ISO 100",
+    description: "A sqirrel resting on a tree, showcasing its natural habitat and behavior.",
+  },
+  {
+    id: 27,
+    title: "Hard working man",
+    photographer: "Sujal R T",
+    category: "Portrait",
+    image: "/gallery/IMG_20250728_133524_432.jpg",
+    metadata: "f/5.6, 1/60s, ISO 800",
+    description: "An elderly farmer strides along a muddy ridge under a glowing sky, embodying strength carved by years of toil.",
+  },
+  {
+    id: 28,
+    title: "cat",
+    photographer: "Vrashabh Devatkal",
+    category: "Wildlife",
+    image: "/gallery/IMG_20250713_211558_531.jpg",
+    metadata: "f/8, 1/60s, ISO 100",
+    description: "A cat sitting and showing its cute face",
+  },
+  {
+    id: 29,
+    title: "Women On Fields",
+    photographer: "Sujal R T",
+    category: "Portrait",
+    image: "/gallery/IMG_20250728_141222_740.jpg",
+    metadata: "f/5.6, 1/60s, ISO 800",
+    description: "Women wade through emerald paddy fields, carrying tender saplings that promise tomorrow’s harvest.",
+  },
+
 ]
 
 const container = {
@@ -241,7 +331,7 @@ export default function GalleryPage() {
   return (
     <div className="flex flex-col">
       {/* Page Header */}
-      <section className="bg-[#0A1D37] py-16 text-white">
+      <section className="bg-[#0A1D37] dark:bg-black py-16 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="font-outfit text-4xl font-bold md:text-5xl">Our Photography Gallery</h1>
@@ -253,16 +343,16 @@ export default function GalleryPage() {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white dark:bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs defaultValue="All" className="w-full" onValueChange={setActiveCategory}>
             <div className="mb-10 overflow-x-auto">
-              <TabsList className="inline-flex w-auto p-1">
+              <TabsList className="inline-flex w-auto p-1 bg-gray-100 dark:bg-[#1A2E4A]">
                 {categories.map((category) => (
                   <TabsTrigger
                     key={category}
                     value={category}
-                    className="font-outfit px-4 py-2 data-[state=active]:bg-[#F7B32B] data-[state=active]:text-[#0A1D37]"
+                    className="font-outfit px-4 py-2 data-[state=active]:bg-[#F7B32B] data-[state=active]:text-[#0A1D37] dark:data-[state=active]:bg-[#F7B32B] dark:data-[state=active]:text-[#0A1D37] dark:text-gray-300"
                   >
                     {category}
                   </TabsTrigger>

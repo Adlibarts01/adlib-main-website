@@ -58,10 +58,18 @@ export default function RegistrationForm({ isOpen, onClose, eventTitle, eventId 
         }),
       })
 
+      // Check if response is JSON
+      const contentType = response.headers.get('content-type')
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await response.text()
+        console.error('Non-JSON response:', text.substring(0, 200))
+        throw new Error('Server returned an invalid response. Please check your API configuration.')
+      }
+
       const result = await response.json()
 
       if (!response.ok) {
-        throw new Error(result.message || 'Registration failed')
+        throw new Error(result.message || result.error || 'Registration failed')
       }
 
       // Show success
@@ -84,7 +92,11 @@ export default function RegistrationForm({ isOpen, onClose, eventTitle, eventId 
 
     } catch (error) {
       console.error('Registration error:', error)
-      setSubmitError(error instanceof Error ? error.message : 'An error occurred during registration. Please try again.')
+      if (error instanceof SyntaxError && error.message.includes('JSON')) {
+        setSubmitError('Server configuration error. Please contact the administrator.')
+      } else {
+        setSubmitError(error instanceof Error ? error.message : 'An error occurred during registration. Please try again.')
+      }
       toast(
         "Registration failed",
        )

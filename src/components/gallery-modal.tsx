@@ -30,6 +30,7 @@ export default function GalleryModal({ currentPhoto, isOpen, onClose, onNext, on
   const [isLiked, setIsLiked] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [showControls, setShowControls] = useState(true)
+  const [isDownloading, setIsDownloading] = useState(false)
 
   useEffect(() => {
     if (isOpen) {
@@ -63,6 +64,122 @@ export default function GalleryModal({ currentPhoto, isOpen, onClose, onNext, on
 
   const handleMouseMove = () => {
     setShowControls(true)
+  }
+
+  const handleShare = async () => {
+    if (!currentPhoto) return
+
+    const shareData = {
+      title: currentPhoto.title,
+      text: `Check out "${currentPhoto.title}" by ${currentPhoto.photographer}`,
+      url: window.location.href,
+    }
+
+    try {
+      // Check if Web Share API is supported
+      if (navigator.share) {
+        await navigator.share(shareData)
+      } else {
+        // Fallback: Copy link to clipboard
+        await navigator.clipboard.writeText(window.location.href)
+        alert("Link copied to clipboard!")
+      }
+    } catch (error) {
+      // User cancelled share or error occurred
+      if (error instanceof Error && error.name !== "AbortError") {
+        console.error("Error sharing:", error)
+        // Fallback: Try to copy to clipboard
+        try {
+          await navigator.clipboard.writeText(window.location.href)
+          alert("Link copied to clipboard!")
+        } catch (clipboardError) {
+          console.error("Error copying to clipboard:", clipboardError)
+          alert("Unable to share. Please copy the URL manually.")
+        }
+      }
+    }
+  }
+
+  const handleDownload = async () => {
+    if (!currentPhoto?.image) return
+
+    setIsDownloading(true)
+    try {
+      // Get the image source - handle both relative paths and full URLs
+      let imageUrl = currentPhoto.image
+
+      // If it's a relative path, ensure it starts with /
+      if (imageUrl.startsWith("/")) {
+        imageUrl = window.location.origin + imageUrl
+      }
+
+      // Fetch the image
+      const response = await fetch(imageUrl)
+      if (!response.ok) {
+        throw new Error(`Failed to fetch image: ${response.statusText}`)
+      }
+
+      // Convert to blob
+      const blob = await response.blob()
+
+      // Create a temporary URL
+      const url = window.URL.createObjectURL(blob)
+
+      // Create a temporary anchor element
+      const link = document.createElement("a")
+      link.href = url
+      link.style.display = "none"
+
+      // Generate filename from photo title and photographer
+      const sanitizedTitle = currentPhoto.title
+        .replace(/[^a-z0-9\s]/gi, "_")
+        .replace(/\s+/g, "_")
+        .toLowerCase()
+        .substring(0, 50) // Limit length
+
+      const sanitizedPhotographer = currentPhoto.photographer
+        ? currentPhoto.photographer
+          .replace(/[^a-z0-9\s]/gi, "_")
+          .replace(/\s+/g, "_")
+          .toLowerCase()
+          .substring(0, 30) // Limit length
+        : "unknown"
+
+      // Get file extension from blob type or original filename
+      let extension = "jpg"
+      if (blob.type) {
+        extension = blob.type.split("/")[1] || "jpg"
+      } else {
+        // Try to extract from original filename
+        const match = currentPhoto.image.match(/\.(jpg|jpeg|png|gif|webp)$/i)
+        if (match) {
+          extension = match[1].toLowerCase()
+        }
+      }
+
+      const filename = `${sanitizedTitle}_by_${sanitizedPhotographer}.${extension}`
+
+      link.download = filename
+
+      // Trigger download
+      document.body.appendChild(link)
+      link.click()
+
+      // Cleanup
+      setTimeout(() => {
+        document.body.removeChild(link)
+        window.URL.revokeObjectURL(url)
+      }, 100)
+    } catch (error) {
+      console.error("Error downloading image:", error)
+      alert(
+        error instanceof Error
+          ? `Failed to download image: ${error.message}`
+          : "Failed to download image. Please try again."
+      )
+    } finally {
+      setIsDownloading(false)
+    }
   }
 
   return (
@@ -196,11 +313,24 @@ export default function GalleryModal({ currentPhoto, isOpen, onClose, onNext, on
                 </Button>
 
                 <div className="flex space-x-2">
-                  <Button variant="outline" size="icon" className="rounded-full">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="rounded-full"
+                    onClick={handleShare}
+                    title="Share photo"
+                  >
                     <Share2 className="h-5 w-5" />
                   </Button>
-                  <Button variant="outline" size="icon" className="rounded-full">
-                    <Download className="h-5 w-5" />
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="rounded-full"
+                    onClick={handleDownload}
+                    disabled={isDownloading}
+                    title="Download image"
+                  >
+                    <Download className={cn("h-5 w-5", isDownloading && "animate-pulse")} />
                   </Button>
                 </div>
               </div>

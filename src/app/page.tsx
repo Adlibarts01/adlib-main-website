@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Camera, Users, Calendar, ImageIcon, ArrowRight } from "lucide-react"
-import HeroSection from "@/components/hero-section"
-import FeaturedGallery from "@/components/featured-gallery"
-import { motion } from "framer-motion"
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Camera, Users, Calendar, ImageIcon, ArrowRight } from "lucide-react";
+import HeroSection from "@/components/hero-section";
+import FeaturedGallery from "@/components/featured-gallery";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
@@ -25,7 +25,7 @@ export default function Home() {
               viewport={{ once: true }}
             >
               
-              <div className="relative h-full w-full rounded-full overflow-hidden border-8 border-adlib-gray dark:border-gray-800">
+              <div className="relative h-full w-full rounded-full overflow-hidden border-8 border-adlib-gray dark:border-gray-800 bg-white">
                 <Image
                   src="/home/Logo club.png"
                   alt="Photographer in action"
@@ -125,7 +125,6 @@ export default function Home() {
       </section>
 
       <FeaturedGallery />
-     
     </div>
-  )
+  );
 }

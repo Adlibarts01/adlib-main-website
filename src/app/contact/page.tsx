@@ -75,7 +75,7 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col">
       {/* Page Header */}
-      <section className="bg-[#0A1D37] py-16 text-white">
+      <section className="bg-[#0A1D37] dark:bg-black py-16 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="font-outfit text-4xl font-bold md:text-5xl">Contact Us</h1>
@@ -87,13 +87,14 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form & Info Section */}
-      <section className="py-16 md:py-24">
+
+      <section className="py-12 bg-white dark:bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
             {/* Contact Information */}
             <div>
-              <h2 className="font-outfit text-3xl font-bold text-[#0A1D37]">Get In Touch</h2>
-              <p className="font-work-sans mt-4 text-gray-600">
+              <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white">Get In Touch</h2>
+              <p className="font-work-sans mt-4 text-gray-600 dark:text-gray-300">
                 Whether you have a question about membership, events, or just want to say hello, we&apos;re here to help.
               </p>
 
@@ -101,8 +102,8 @@ export default function ContactPage() {
                 <div className="flex items-start">
                   <MapPin className="mr-4 h-6 w-6 text-[#F7B32B]" />
                   <div>
-                    <h3 className="font-outfit text-lg font-semibold text-[#0A1D37]">Visit Us</h3>
-                    <p className="font-work-sans text-gray-600">
+                    <h3 className="font-outfit text-lg font-semibold text-[#0A1D37] dark:text-white">Visit Us</h3>
+                    <p className="font-work-sans text-gray-600 dark:text-gray-300">
                     Golden Jublie Block
                     <br />
                       Siddaganga Institute of Technology
@@ -115,8 +116,8 @@ export default function ContactPage() {
                 <div className="flex items-start">
                   <Mail className="mr-4 h-6 w-6 text-[#F7B32B]" />
                   <div>
-                    <h3 className="font-outfit text-lg font-semibold text-[#0A1D37]">Email Us</h3>
-                    <p className="font-work-sans text-gray-600">
+                    <h3 className="font-outfit text-lg font-semibold text-[#0A1D37] dark:text-white">Email Us</h3>
+                    <p className="font-work-sans text-gray-600 dark:text-gray-300">
                       <a href="mailto:adlibarts01@gmail.com" className="text-[#F7B32B] hover:underline">
                         adlibarts01@gmail.com
                       </a>
@@ -127,8 +128,8 @@ export default function ContactPage() {
                 <div className="flex items-start">
                   <Phone className="mr-4 h-6 w-6 text-[#F7B32B]" />
                   <div>
-                    <h3 className="font-outfit text-lg font-semibold text-[#0A1D37]">Call Us</h3>
-                    <p className="font-work-sans text-gray-600">
+                    <h3 className="font-outfit text-lg font-semibold text-[#0A1D37] dark:text-white">Call Us</h3>
+                    <p className="font-work-sans text-gray-600 dark:text-gray-300">
                       <a href="tel:7981103350" className="text-[#F7B32B] hover:underline">
                       7981103350
                       </a>
@@ -138,7 +139,7 @@ export default function ContactPage() {
               </div>
 
               <div className="mt-10">
-                <h3 className="font-outfit text-lg font-semibold text-[#0A1D37]">Follow Us</h3>
+                <h3 className="font-outfit text-lg font-semibold text-[#0A1D37] dark:text-white">Follow Us</h3>
                 <div className="mt-4 flex space-x-4">
                   <a
                     href="https://www.instagram.com/sit_adlib/"
@@ -156,18 +157,18 @@ export default function ContactPage() {
 
             {/* Contact Form */}
             <div>
-              <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-xs">
-                <h2 className="font-outfit text-2xl font-bold text-[#0A1D37]">Send Us a Message</h2>
-                <p className="font-work-sans mt-2 text-gray-600">We&apos;ll get back to you as soon as possible.</p>
+              <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1A2E4A] p-6 shadow-xs">
+                <h2 className="font-outfit text-2xl font-bold text-[#0A1D37] dark:text-white">Send Us a Message</h2>
+                <p className="font-work-sans mt-2 text-gray-600 dark:text-gray-300">We&apos;ll get back to you as soon as possible.</p>
 
                 {formStatus === "success" && (
-                  <div className="mt-4 rounded-lg bg-green-50 p-4 text-green-700">
+                  <div className="mt-4 rounded-lg bg-green-50 dark:bg-green-900/20 p-4 text-green-700 dark:text-green-400">
                     <p className="font-work-sans font-medium">Thank you for your message! We&apos;ll be in touch soon.</p>
                   </div>
                 )}
 
                 {formStatus === "error" && (
-                  <div className="mt-4 rounded-lg bg-red-50 p-4 text-red-700">
+                  <div className="mt-4 rounded-lg bg-red-50 dark:bg-red-900/20 p-4 text-red-700 dark:text-red-400">
                     <p className="font-work-sans font-medium">
                       There was an error sending your message. Please try again.
                     </p>
@@ -280,7 +281,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <Button type="submit" className="w-full bg-[#0A1D37] hover:bg-[#0A1D37]/90">
+                  <Button type="submit" className="w-full bg-[#0A1D37] dark:bg-adlib-secondary dark:hover:bg-adlib-tertiary hover:bg-[#0A1D37]/90">
                     Send Message
                   </Button>
                 </form>

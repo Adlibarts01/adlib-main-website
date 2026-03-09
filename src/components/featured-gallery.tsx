@@ -68,11 +68,11 @@ export default function FeaturedGallery() {
     activeCategory === "All" ? galleryItems : galleryItems.filter((item) => item.category === activeCategory)
 
   return (
-    <section className="py-16 md:py-24 bg-[#E5E5E5]">
+    <section className="py-16 md:py-24 bg-[#E5E5E5] dark:bg-black">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] md:text-4xl">Featured Photography</h2>
-          <p className="font-work-sans mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white md:text-4xl">Featured Photography</h2>
+          <p className="font-work-sans mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Explore our collection of stunning photographs captured by our talented club members.
           </p>
         </div>
@@ -86,8 +86,8 @@ export default function FeaturedGallery() {
               className={cn(
                 "font-outfit",
                 activeCategory === category
-                  ? "bg-[#F7B32B] text-[#0A1D37] border-[#F7B32B]"
-                  : "bg-white text-[#0A1D37] hover:bg-[#F7B32B]/10",
+                  ? "bg-[#F7B32B] text-[#0A1D37] border-[#F7B32B] dark:bg-[#F7B32B] dark:text-[#0A1D37]"
+                  : "bg-white dark:bg-[#1A2E4A] text-[#0A1D37] dark:text-white hover:bg-[#F7B32B]/10 dark:hover:bg-[#F7B32B]/20",
               )}
               onClick={() => setActiveCategory(category)}
             >
@@ -99,7 +99,7 @@ export default function FeaturedGallery() {
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredGallery.map((item) => (
-            <div key={item.id} className="group relative overflow-hidden rounded-lg bg-white shadow-md">
+            <div key={item.id} className="group relative overflow-hidden rounded-lg bg-white dark:bg-[#1A2E4A] shadow-md">
               <div className="aspect-4/3 relative overflow-hidden">
                 <Image
                   src={item.image || "/placeholder.svg"}
@@ -111,21 +111,25 @@ export default function FeaturedGallery() {
               <div className="p-4">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="font-outfit text-lg font-semibold text-[#0A1D37]">{item.title}</h3>
-                    <p className="font-work-sans text-sm text-gray-600">by {item.photographer}</p>
+                    <h3 className="font-outfit text-lg font-semibold text-[#0A1D37] dark:text-white">{item.title}</h3>
+                    <p className="font-work-sans text-sm text-gray-600 dark:text-gray-300">by {item.photographer}</p>
                   </div>
-                  <span className="font-outfit text-xs font-medium px-2 py-1 rounded-full bg-[#E5E5E5] text-[#0A1D37]">
+                  <span className="font-outfit text-xs font-medium px-2 py-1 rounded-full bg-[#E5E5E5] dark:bg-[#0A1D37] text-[#0A1D37] dark:text-white">
                     {item.category}
                   </span>
                 </div>
-                <p className="font-work-sans text-xs text-gray-500 mt-2 font-mono">{item.metadata}</p>
+                <p className="font-work-sans text-xs text-gray-500 dark:text-gray-400 mt-2 font-mono">{item.metadata}</p>
               </div>
             </div>
           ))}
         </div>
 
         <div className="mt-12 text-center">
+<<<<<<< HEAD
           <Button asChild className="bg-[#0A1D37] hover:bg-[#0A1D37]/90 text-white">
+=======
+          <Button asChild className="bg-[#0A1D37] dark:bg-adlib-secondary dark:hover:bg-adlib-tertiary hover:bg-[#0A1D37]/90">
+>>>>>>> refs/remotes/origin/main
             <Link href="/gallery">
               View Full Gallery
               <ArrowRight className="ml-2 h-4 w-4" />

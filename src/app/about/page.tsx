@@ -7,7 +7,7 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col">
       {/* Page Header */}
-      <section className="bg-[#0A1D37] py-16 text-white">
+      <section className="bg-[#0A1D37] dark:bg-black py-16 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="font-outfit text-4xl font-bold md:text-5xl">About Adlib Photography Club</h1>
@@ -19,12 +19,17 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white dark:bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 items-center">
             <div>
+<<<<<<< HEAD
               <h2 className="font-outfit text-3xl font-bold text-white">Our Story</h2>
               <div className="font-work-sans mt-6 space-y-4 text-gray-300">
+=======
+              <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white">Our Story</h2>
+              <div className="font-work-sans mt-6 space-y-4 text-gray-600 dark:text-gray-300">
+>>>>>>> refs/remotes/origin/main
                 <p>
                   Adlib Photography Club was founded in 2018 by a small group of photography students who wanted to
                   create a supportive community for learning and creative exploration beyond the classroom.
@@ -53,52 +58,52 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Values Section */}
-      <section className="py-16 md:py-24 bg-[#E5E5E5]">
+      <section className="py-16 md:py-24 bg-[#E5E5E5] dark:bg-[#0A1D37]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-outfit text-3xl font-bold text-[#0A1D37]">Our Mission & Values</h2>
-            <p className="font-work-sans mt-4 text-gray-600">
+            <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white">Our Mission & Values</h2>
+            <p className="font-work-sans mt-4 text-gray-600 dark:text-gray-300">
               At Adlib Photography Club, we&apos;re guided by a set of core principles that shape everything we do.
             </p>
           </div>
 
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-lg bg-white p-6 shadow-md">
+            <div className="rounded-lg bg-white dark:bg-[#1A2E4A] p-6 shadow-md">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#F7B32B]/10">
                 <Camera className="h-6 w-6 text-[#F7B32B]" />
               </div>
-              <h3 className="font-outfit text-xl font-bold text-[#0A1D37]">Technical Excellence</h3>
-              <p className="font-work-sans mt-2 text-gray-600">
+              <h3 className="font-outfit text-xl font-bold text-[#0A1D37] dark:text-white">Technical Excellence</h3>
+              <p className="font-work-sans mt-2 text-gray-600 dark:text-gray-300">
                 We believe in mastering the technical aspects of photography as the foundation for creative expression.
               </p>
             </div>
 
-            <div className="rounded-lg bg-white p-6 shadow-md">
+            <div className="rounded-lg bg-white dark:bg-[#1A2E4A] p-6 shadow-md">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#F7B32B]/10">
                 <ApertureIcon className="h-6 w-6" bladeCount={6} animated={false} />
               </div>
-              <h3 className="font-outfit text-xl font-bold text-[#0A1D37]">Creative Vision</h3>
-              <p className="font-work-sans mt-2 text-gray-600">
+              <h3 className="font-outfit text-xl font-bold text-[#0A1D37] dark:text-white">Creative Vision</h3>
+              <p className="font-work-sans mt-2 text-gray-600 dark:text-gray-300">
                 We encourage members to develop their unique artistic voice and perspective through photography.
               </p>
             </div>
 
-            <div className="rounded-lg bg-white p-6 shadow-md">
+            <div className="rounded-lg bg-white dark:bg-[#1A2E4A] p-6 shadow-md">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#F7B32B]/10">
                 <Users className="h-6 w-6 text-[#F7B32B]" />
               </div>
-              <h3 className="font-outfit text-xl font-bold text-[#0A1D37]">Community Learning</h3>
-              <p className="font-work-sans mt-2 text-gray-600">
+              <h3 className="font-outfit text-xl font-bold text-[#0A1D37] dark:text-white">Community Learning</h3>
+              <p className="font-work-sans mt-2 text-gray-600 dark:text-gray-300">
                 We learn and grow together, sharing knowledge, techniques, and constructive feedback.
               </p>
             </div>
 
-            <div className="rounded-lg bg-white p-6 shadow-md">
+            <div className="rounded-lg bg-white dark:bg-[#1A2E4A] p-6 shadow-md">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#F7B32B]/10">
                 <ImageIcon className="h-6 w-6 text-[#F7B32B]" />
               </div>
-              <h3 className="font-outfit text-xl font-bold text-[#0A1D37]">Visual Storytelling</h3>
-              <p className="font-work-sans mt-2 text-gray-600">
+              <h3 className="font-outfit text-xl font-bold text-[#0A1D37] dark:text-white">Visual Storytelling</h3>
+              <p className="font-work-sans mt-2 text-gray-600 dark:text-gray-300">
                 We value photography&apos;s power to communicate ideas, emotions, and narratives through visual means.
               </p>
             </div>
@@ -107,19 +112,24 @@ export default function AboutPage() {
       </section>
 
       {/* What We Offer Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white dark:bg-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
+<<<<<<< HEAD
             <h2 className="font-outfit text-3xl font-bold text-white">What We Offer</h2>
             <p className="font-work-sans mt-4 text-gray-600">
+=======
+            <h2 className="font-outfit text-3xl font-bold text-[#0A1D37] dark:text-white">What We Offer</h2>
+            <p className="font-work-sans mt-4 text-gray-600 dark:text-gray-300">
+>>>>>>> refs/remotes/origin/main
               As a member of Adlib Photography Club, you&apos;ll have access to a variety of resources and opportunities.
             </p>
           </div>
 
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="rounded-lg border border-gray-200 bg-white p-6">
-              <h3 className="font-outfit text-xl font-bold text-[#0A1D37]">Workshops & Training</h3>
-              <ul className="font-work-sans mt-4 space-y-2 text-gray-600">
+            <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1A2E4A] p-6">
+              <h3 className="font-outfit text-xl font-bold text-[#0A1D37] dark:text-white">Workshops & Training</h3>
+              <ul className="font-work-sans mt-4 space-y-2 text-gray-600 dark:text-gray-300">
                 <li className="flex items-start">
                   <span className="mr-2 text-[#F7B32B]">•</span>
                   <span>Weekly technical workshops</span>
@@ -139,9 +149,9 @@ export default function AboutPage() {
               </ul>
             </div>
 
-            <div className="rounded-lg border border-gray-200 bg-white p-6">
-              <h3 className="font-outfit text-xl font-bold text-[#0A1D37]">Community & Events</h3>
-              <ul className="font-work-sans mt-4 space-y-2 text-gray-600">
+            <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1A2E4A] p-6">
+              <h3 className="font-outfit text-xl font-bold text-[#0A1D37] dark:text-white">Community & Events</h3>
+              <ul className="font-work-sans mt-4 space-y-2 text-gray-600 dark:text-gray-300">
                 <li className="flex items-start">
                   <span className="mr-2 text-[#F7B32B]">•</span>
                   <span>Monthly photo walks and field trips</span>
@@ -161,9 +171,9 @@ export default function AboutPage() {
               </ul>
             </div>
 
-            <div className="rounded-lg border border-gray-200 bg-white p-6">
-              <h3 className="font-outfit text-xl font-bold text-[#0A1D37]">Resources & Support</h3>
-              <ul className="font-work-sans mt-4 space-y-2 text-gray-600">
+            <div className="rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1A2E4A] p-6">
+              <h3 className="font-outfit text-xl font-bold text-[#0A1D37] dark:text-white">Resources & Support</h3>
+              <ul className="font-work-sans mt-4 space-y-2 text-gray-600 dark:text-gray-300">
                 <li className="flex items-start">
                   <span className="mr-2 text-[#F7B32B]">•</span>
                   <span>Equipment lending library</span>
